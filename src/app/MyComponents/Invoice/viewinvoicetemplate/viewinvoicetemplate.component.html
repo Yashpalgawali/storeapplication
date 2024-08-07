@@ -92,18 +92,74 @@
                     <td  style="font-size:12px;padding:5px;text-align:right">{{prod.product.prod_hsn}}</td>
                     <td  style="font-size:12px;padding:5px;text-align:right">{{prod.product.prod_unit}}</td>
                     <td  style="font-size:12px;padding:5px;text-align:right">{{prod.price}}</td>
-                    <td  style="font-size:12px;padding:5px;text-align:right">{{prod.cgst}}({{prod.cgst_per}}%)</td>
-                    <td  style="font-size:12px;padding:5px;text-align:right">{{prod.sgst}}({{prod.sgst_per}}%)</td>
-                    <td  style="font-size:12px;padding:5px;text-align:right">{{prod.igst}}({{prod.igst_per}}%)</td>
-                    <td  style="font-size:12px;padding:5px;text-align:right">{{prod.subtotal+prod.cgst+prod.sgst+prod.igst}}</td>
+                    <td  style="font-size:12px;padding:5px;text-align:right"> {{prod.cgst_per}}%</td>
+                    <td  style="font-size:12px;padding:5px;text-align:right"> {{prod.sgst_per}}%</td>
+                    <td  style="font-size:12px;padding:5px;text-align:right"> {{prod.igst_per}}%</td>
+                    <td  style="font-size:12px;padding:5px;text-align:right">{{prod.price}}</td>
 
                  </tr>
                  <tr style="border-top:1px solid #999;border-bottom:1px solid #999">
                   <td colspan="2" style="font-size:12px;padding:5px;text-align:right"><b>Total Qty:</b></td><td style="font-size:12px;padding:5px;text-align:right">
                   <b>{{total_qty}} </b></td><td colspan='6' style="font-size:12px;padding:5px;text-align:right"><b>Total Assessable Value</b></td>
                   <td style="font-size:12px;padding:5px;text-align:right"><b> {{subtotal}} </b></td></tr>  
-                     
-            </tbody>
+                   
+                  <!--Calculate and Display CGST -->
+                  
+                  <tr><td colspan='9' style="font-size:12px;padding:5px;text-align:right"><b>CGST  {{cgst_per}} %</b></td>
+                    <td style="font-size:12px;padding:5px;text-align:right"><b>{{cgst}}</b></td>
+                  </tr>
+                   <!--Calculate and Display SGST -->
+                  
+                   <tr><td colspan='9' style="font-size:12px;padding:5px;text-align:right"><b>SGST  {{sgst_per}} %</b></td>
+                    <td style="font-size:12px;padding:5px;text-align:right"><b>{{sgst}}</b></td>
+                  </tr>
+                   <!------------------------------------------------------------------------------->
+		    <tr><td colspan='9' style="font-size:12px;padding:5px;text-align:right"><b>Packing & Forwarding Charges</b></td>
+        <td style="font-size:12px;padding:5px;text-align:right"><b>{{0}}</b></td>
+        </tr>
+         
+            <tr><td colspan='9' style="font-size:12px;padding:5px;text-align:right"><b>Grand Total</b></td>
+        <td style="font-size:12px;padding:5px;text-align:right"><b> {{final_total}}</b></td>
+        </tr>	       
+     </tbody>
+ </table>
+ <table class="table table-bordered">
 
+  <tbody>
+    <tr>
+      <td  style="width:75%;font-size:12px;padding:5px">
+  <b>DECLARATION: </b>
+  <P> We declare that this invoice shows the actual price of the goods described and that all particulars are true and correct.</P>
+  <!--<b>CUSTOMER ACKNOWLEDGEMENT: </b>
+  <P>I <b><?php if($order){ echo $order['firstname']." ".$order['lastname']; } ?></b> hereby confirm that the above said product/s are being puechased for my internal/personal consumption and not for re-sale.</P>-->
+  </td>
+   <td style="padding:5px;text-align:center">
+   <b>For Tidy Casa Pvt. Ltd.</b>
+  <p><br/><br/><br></p>
+   <b>Authorized Signatory</b>
+   </td>
+    </tr>
+    <tr>
+      <td style="font-size:12px;padding:5px"><b>GST NO.</b></td>          
+        <td style="font-size:12px;padding:5px"><b>PAN NO.</b></td>
+    <tr>
+    <tr>
+      <td style="font-size:12px;padding:5px">27AAFCT4759B1ZA</td>            
+        <td style="font-size:12px;padding:5px">AAFCT4759B</td>
+    </tr>
+    
+  </tbody>
 </table>
 </div>
+<div align="center">
+  <button type="buttton" onclick="window.print()" name="print" class="print btn btn-success btn-md">Print</button>
+  </div>
+  
+  <style>
+  @media print {
+    .print{
+    display:none;
+    }
+    
+  }
+  </style>

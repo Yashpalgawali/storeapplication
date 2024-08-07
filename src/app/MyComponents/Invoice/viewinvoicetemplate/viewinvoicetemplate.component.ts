@@ -23,8 +23,14 @@ export class ViewinvoicetemplateComponent implements  OnInit {
     qt !: number
     sbt !: number
     cgst !: number
+    sgst !: number    
     igst !: number
-
+    cgst_per !: number
+    sgst_per !: number
+    igst_per !: number
+    tot_cgst = 0
+    tot_sgst = 0
+    tot_igst = 0 
 
   customer : Customer = new Customer()
 
@@ -54,15 +60,32 @@ export class ViewinvoicetemplateComponent implements  OnInit {
               this.invprodlist = result
               for(let i=0;i<this.invprodlist.length;i++)
               {
+                alert(JSON.stringify(this.invprodlist[i]))
                 this.qt = +JSON.stringify(this.invprodlist[i].qty)
                 this.sbt = +JSON.stringify(this.invprodlist[i].subtotal)
                 this.cgst = +JSON.stringify(this.invprodlist[i].cgst)
-                this.cgst =  this.cgst  * 2
+                this.sgst =  this.cgst 
                 this.igst = +JSON.stringify(this.invprodlist[i].igst)
               
-                this.subtotal = this.subtotal+ this.sbt+this.cgst+this.igst
-              
+                this.subtotal = this.subtotal+ this.sbt
+                if(this.cgst!=0)
+                  {
+                    this.cgst_per = +JSON.stringify(this.invprodlist[i].cgst_per)
+                    this.sgst_per = +JSON.stringify(this.invprodlist[i].cgst_per)
+                    this.igst_per = 0
+                    this.tot_cgst = this.tot_cgst + this.cgst
+                    alert('CGST = '+this.cgst+'\n total cgst = '+this.tot_cgst)
+                  }
+                  if(this.igst!=0)
+                    {
+                      this.igst_per = this.igst_per
+                      this.sgst_per = 0
+                      this.cgst_per = 0
+
+                      this.tot_igst = this.tot_igst + this.igst
+                    }
                 this.total_qty = this.total_qty + this.qt
+                this.final_total =  this.subtotal+this.cgst+this.sgst+this.igst
               }
           },
           error:(err)=> {
