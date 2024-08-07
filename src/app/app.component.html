@@ -1,0 +1,130 @@
+<div *ngIf="isLoggedIn!=null">
+  <nav class="navbar navbar-expand-md navbar-light bg-light  fixed-top ">
+    
+    <!--   <a class="navbar-brand  " routerLink=" "><img  src=  " img/savera_logo.jpg}  "id="c_logo  "></a> -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+
+          <li  class="nav-item ">
+            <a  class="nav-link  " routerLink="home" >Home</a>
+          </li>
+         
+          <li ngbDropdown class="nav-item dropdown">
+            <a ngbDropdownToggle class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Product</a>
+             <ul ngbDropdownMenu class="dropdown-menu">
+               <li><a ngbDropdownItem class="dropdown-item" routerLink ="product">Add Product</a></li>
+                <li><a  ngbDropdownItem class="dropdown-item" routerLink="viewproduct">View Product</a></li>
+             </ul>
+          </li>
+  
+        <li ngbDropdown class="nav-item dropdown">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Customer</a>
+           <ul ngbDropdownMenu class="dropdown-menu">
+             <li><a ngbDropdownItem class="dropdown-item" routerLink="addcustomer">Add Customer</a></li>
+              <li><a ngbDropdownItem class="dropdown-item" routerLink="viewcustomers">View Customer</a></li>
+           </ul>
+        </li>
+        <li ngbDropdown class="nav-item dropdown">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Vendor</a>
+           <ul ngbDropdownMenu class="dropdown-menu">
+             <li><a ngbDropdownItem class="dropdown-item" routerLink="addvendor">Add Vendor</a></li>
+              <li><a ngbDropdownItem class="dropdown-item" routerLink="viewvendors">View Vendors</a></li>
+           </ul>
+        </li>
+  
+        <li ngbDropdown class="nav-item dropdown">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Invoice</a>
+           <ul ngbDropdownMenu class="dropdown-menu">
+             <li><a ngbDropdownItem class="dropdown-item" routerLink="addinvoice">Add Invoice</a></li>
+              <li><a ngbDropdownItem class="dropdown-item" routerLink="viewinvoice">View Invoice</a></li>
+           </ul>
+        </li>
+  
+        <li ngbDropdown class="nav-item dropdown">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Debit</a>
+           <ul ngbDropdownMenu class="dropdown-menu">
+             <li><a ngbDropdownItem class="dropdown-item" routerLink="">Add Debit </a></li>
+              <li><a ngbDropdownItem class="dropdown-item" routerLink="">View Debit</a></li>
+           </ul>
+        </li>
+
+        <li ngbDropdown class="nav-item dropdown">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Purchase Order Products</a>
+           <ul ngbDropdownMenu class="dropdown-menu">
+             <li><a ngbDropdownItem class="dropdown-item" routerLink="addpoproduct">Add Purchase Order Product </a></li>
+              <li><a ngbDropdownItem class="dropdown-item" routerLink="viewpoproduct">View Purchase Order Products</a></li>
+           </ul>
+        </li>
+
+        <li ngbDropdown class="nav-item dropdown">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Purchase Order</a>
+           <ul ngbDropdownMenu class="dropdown-menu">
+             <li><a ngbDropdownItem class="dropdown-item" routerLink="addpurchaseorder">Add Purchase Order </a></li>
+              <li><a ngbDropdownItem class="dropdown-item" routerLink="viewpurchaseorder">View Purchase Order</a></li>
+           </ul>
+        </li>
+        
+        <li class="nav-item"><a class="nav-link active" routerLink="/activity"> Activities</a></li>
+        <hr>
+        <li ngbDropdown class="nav-item dropdown" >
+          <a ngbDropdownToggle class="nav-link dropdown-toggle" style="float : right !important;" data-bs-toggle="dropdown">Welcome&nbsp;</a>
+           <ul ngbDropdownMenu class="dropdown-menu">
+           <li><a ngbDropdownItem class="dropdown-item" routerLink="changepass"><i class="fa fa-cog"></i>&nbsp;Change Password</a></li>
+           <hr>
+             <li><a ngbDropdownItem class="dropdown-item" routerLink="logout"><i class="fa fa-power-off" style="color:red;"></i>&nbsp;Logout</a></li>
+           </ul>
+        </li>
+  
+        </ul> 
+      </div>    
+     </nav>
+    
+    </div>
+
+    <div *ngIf="isLoggedIn==null">
+      <nav class="navbar navbar-expand-md navbar-light bg-light  fixed-top ">
+    
+        <!--   <a class="navbar-brand  " routerLink=" "><img  src=  " img/savera_logo.jpg}  "id="c_logo  "></a> -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+              <li><a  class="nav-link" routerLink ="login">Login</a></li>
+            
+            </ul>
+          </div>
+      </nav>
+    </div>
+
+
+      <!--/row-->
+      
+      <!-- <div >
+        <nav class="navbar navbar-expand-md navbar-light bg-light  fixed-top ">
+     -->
+          <!--   <a class="navbar-brand  " routerLink=" "><img  src="img/savera_logo.jpg}  "id="c_logo  "></a> -->
+              <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link active" routerLink="/"><i class="fa fa-home" style="color:blue;"></i>&nbsp;Home</a></li>
+                <li class="nav-item"><a class="nav-link active" routerLink="/bookappointment"><i class="fas fa-calendar"></i>&nbsp;Book Appointment</a>
+                <li class="nav-item"><a class="nav-link active" routerLink="/searchappointment"><i class="fa-solid fa-magnifying-glass"></i>&nbsp;Search Appointment</a>
+                <li class="nav-item"><a class="nav-link active"  routerLink="/login"><i class="fas fa-sign-in-alt"></i>&nbsp;Login</a>
+             
+              </ul>
+            </div>
+            </nav>
+</div> -->
+      <!--/row-->
+<router-outlet></router-outlet>
+<footer class="footer text-center">
+  <div class="container">
+    <span>All Rights Reserved &#64;Company</span>
+  </div>
+</footer>

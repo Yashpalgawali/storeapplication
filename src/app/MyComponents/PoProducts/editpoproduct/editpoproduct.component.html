@@ -1,0 +1,60 @@
+
+<div class="container" >
+    <!-- start: PAGE HEADER -->
+    <div class="row">
+      <div class="col-sm-12">
+          
+          <!-- start: PAGE TITLE & BREADCRUMB -->
+          <ol class="breadcrumb">
+           <li class="breadcrumb-item" >
+               <a routerLink="/"> <i class="fa fa-home"></i>&nbsp;Home </a>
+           </li>
+              <li class="breadcrumb-item active" aria-current="page">Edit PO Product</li>
+          </ol>
+      </div>
+  </div>
+	<div class="card">
+        <div class="card-header"> <h4>Edit PO Product</h4> </div>
+    
+    <div class="card-body">
+      <form (ngSubmit)="updatePoProduct()">
+         <div class="form-group">
+           <label>Product Name</label>
+             <input class="form-control mb-3" placeholder="Enter Product Name" type="text" [(ngModel)]="poproduct.prod_name" id="prod_name" name="prod_name" required />
+         </div>
+         
+         <div class="form-group">
+           <label>Unit</label>
+             <select id="prod_unit" class="form-control mb-3" [(ngModel)]="poproduct.prod_unit" name="prod_unit" required >
+                 <option selected disabled  >Please Select Unit</option>
+                 <option value="kg">KiloGram</option>
+                 <option value="lt">Liter</option>
+                 <option value="mt">Meter</option>
+                 <option value="num">Number</option>
+             </select> 
+         </div>
+         
+         <div class="form-group">
+           <label>Product Price</label>
+             <input class="form-control mb-3" placeholder="Enter Product Price" [(ngModel)]="poproduct.prod_price" type="text" id="prod_price" name="prod_price" required />
+         </div>
+         
+         <div class="form-group">
+           <label>Product Model Number</label>
+             <input class="form-control mb-3" placeholder="Enter Product Model Number" [(ngModel)]="poproduct.prod_model" type="text" id="prod_model_no" name="prod_model_no" required />
+         </div>
+         
+         <div class="form-group">
+           <label>Product HSN</label>
+             <input class="form-control mb-3" placeholder="Enter HSN" type="number" [(ngModel)]="poproduct.prod_hsn" id="prod_hsn" name="prod_hsn" required />
+         </div>
+         
+         <div class="form-group">
+           <label>GST Tax Rate</label>
+             <input class="form-control mb-3" placeholder="Enter GST rate " type="number"  [(ngModel)]="poproduct.gst_rate" id="gsttax" name="gsttax" required />
+         </div>    
+      <input type="submit"  value="Update Product" class="btn btn-primary">			 	
+   </form>
+  </div>
+ </div>
+</div>

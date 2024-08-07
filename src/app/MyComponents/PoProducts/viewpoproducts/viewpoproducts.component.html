@@ -1,0 +1,35 @@
+<div class="container">
+    <h4>View Purchase Order Products</h4>
+    <div *ngIf="response" ><h6 class="alert alert-success">{{response}}</h6></div>
+    <div *ngIf="reserr" ><h6 class="alert alert-danger">{{reserr}}</h6></div>
+    <table class="table table-hover  table-striped">
+        <caption>View Purchase Order Products</caption>
+        <thead>
+            <th>Sr No.</th>
+            <th>Product</th>
+            <th>Model Number</th>
+            <th> HSN </th>
+            <th>Price</th>
+            <th>Unit</th>
+            <!-- <th>Tax</th> -->
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let prod of poprodlist; let i=index"> 
+                <td>{{i+1}}</td>
+                <td>{{prod.prod_name}}</td>
+                <td>{{prod.prod_model}}</td>
+                <td>{{prod.prod_hsn}}</td>
+                <td>{{prod.prod_price}}</td>
+                <td>{{prod.prod_unit}}</td>
+                <!-- <td *ngIf="prod.cgst!=0">
+                    {{prod.cgst*2}}
+                </td>
+                <td *ngIf="prod.igst!=0">
+                    {{prod.igst*2}}
+                </td> -->
+                <td><button class="btn btn-primary" (click)="getPoProductById(prod.prod_id)"><i class="fa fa-edit"></i> Edit </button> </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,92 @@
+<div class="container">
+    
+    <form (ngSubmit)="updatePOProducts(purchase_prod)" method="post" #purchase_prod="ngForm">
+
+        <div class="form-group">
+            <label for="product">Product</label>
+              <select id="product" name="product" class="form-control mb-3" [(ngModel)]="po_product.product">
+                  <option selected>Please Select Any Product</option>
+                  <option  *ngFor="let prod of  prodlist ; let i=index" [ngValue]="prod">{{prod.prod_name}} </option>
+              </select>
+          </div>
+        <div class="form-group">
+            <label for="qty">Quantity</label>
+            <input type="number" name="qty" class="form-control" [(ngModel)]="po_product.qty" id="qty">
+        </div>
+        <label>Select State</label><br>
+        <div class="form-check mb-1">
+            <input type="radio" class="form-check-input" id="maharashtra" [(ngModel)]="po_product.stoption" name="stoption" value="mh" checked>
+            <label class="form-check-label" for="maharashtra">Maharashtra</label>
+        </div>
+            
+        <div class="form-check  mb-1">
+              <input type="radio" class="form-check-input" id="other" [(ngModel)]="po_product.stoption" name="stoption" value="ot">
+                <label class="form-check-label" for="other">Other</label>
+        </div>
+
+        <button class="btn btn-primary" >Add Purchase Order</button>
+    </form>
+
+
+    <div class="col-sm-12">
+        <div class="card-header">
+            <strong>Invoice Product List </strong>
+        </div>
+     <table class="table table-striped table-bordered" id="sample1" >
+       <thead>
+           <tr>
+               <td>Sr.no</td>
+               <td>Product Name</td>
+               <td>HSN</td>
+               <td>Price</td>
+               <td>Quantity</td>
+               <td>CGST</td>
+               <td>SGST</td>
+               <td>IGST</td>
+               <td>Total</td>
+               <!-- <td>Action</td> -->
+           </tr>
+       </thead>
+       
+       <tbody>
+       <tr *ngFor="let prod of po_prod_list; let i=index">
+            <td>{{i+1}}</td>
+            <td>{{prod.product.prod_name}}</td>
+            <td>{{prod.product.prod_hsn}}</td>
+            <td>{{prod.product.prod_price}}</td>
+            <td>{{prod.qty}}</td>
+            <td>{{prod.cgst}}</td>
+            <td>{{prod.sgst}}</td>
+            <td>{{prod.igst}}</td>
+            <td>{{prod.Total}}</td>
+       </tr>   
+
+       </tbody>
+     </table>
+
+    <div class="form-group">
+        <form (ngSubmit)="updatePurchaseOrderProducts(purchase_prod_order)" method="post" #purchase_prod_order="ngForm">
+            <div class="form-group mb-3">
+                <label for="product">Select Vendor</label>
+                 <select name="vendor" id="vendor" class="form-control" placeholder="Select Vendor" [(ngModel)]="purchase_order.vendor"> 
+                    <option>Please Select Vendor</option>
+                        <option *ngFor="let vendor of vendlist" [ngValue]="vendor">{{vendor.vendor_name}}</option>
+                 </select>
+              </div>
+            
+            <div class="form-group mb-3">
+                <label for="">Prepared By</label>
+                    <input type="text" name="preparedby" id="preparedby" class="form-control" placeholder="Prepared By">
+            </div>
+            <div class="form-group mb-3">
+                <label for="tansport_charge">Transport Charges</label>
+                    <input type="number" name="tansport_charge" id="tansport_charge" class="form-control" placeholder="Enter Transport Charges">
+            </div>
+            <div class="form-group mb-3">
+                <label for="packing_charge">Packing Charges</label>
+                    <input type="number" name="packing_charge" id="packing_charge" class="form-control" placeholder="Enter Packing Charges">
+            </div>
+            <button class="btn btn-primary">Save Purchase Order</button>
+        </form>
+    </div> 
+</div>

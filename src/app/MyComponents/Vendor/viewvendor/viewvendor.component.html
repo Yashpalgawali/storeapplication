@@ -1,0 +1,47 @@
+<div class="container">
+    <!-- start: PAGE HEADER -->
+    <div class="row">
+       <div class="col-sm-12">
+           
+           <!-- start: PAGE TITLE & BREADCRUMB -->
+           <ol class="breadcrumb">
+            <li class="breadcrumb-item" >
+                <a routerLink="/"> <i class="fa fa-home"></i>&nbsp;Home </a>
+            </li>
+               <li class="breadcrumb-item active" aria-current="page">View Vendors</li>
+           </ol>
+           <a routerLink="/addvendor" class="btn btn-primary" style="float:right;" >Add Vendor</a>
+       </div>
+   </div>
+    <div *ngIf="reserr">
+        <h6 class="alert alert-danger">{{reserr}}</h6>
+    </div>
+    <div *ngIf="response">
+        <h6 class="alert alert-success">{{response}}</h6>
+    </div>
+   <table class="table table-hover table-striped">
+       <thead>
+           <tr>
+               <th>Sr no</th>
+               <th>Vendor Name</th>
+               <th>Contact</th>
+               <th>Address</th>
+               <th>Email</th>
+               <th>Action</th>
+           </tr>
+       </thead>
+       <tbody>
+           <tr *ngFor="let vend of vendorlist; let i=index">
+               <td>{{i+1}}</td>
+               <td>{{vend.vendor_name}}</td>
+               <td>{{vend.vendor_contact}}</td>
+               <td>{{vend.vendor_address}}</td>
+               <td>{{vend.vendor_email}}</td>
+               <td>
+                    <button class="btn btn-primary" (click)="getvendorbyid(vend.vendor_id)" > <i class="fa fa-edit"></i> Edit</button>
+                    <button class="btn btn-success" routerLink="" > <i class="fa fa-eye"></i> View</button>
+               </td>
+           </tr>
+       </tbody>
+   </table>
+</div>
