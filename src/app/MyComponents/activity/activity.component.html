@@ -1,0 +1,35 @@
+<div class="container">
+       <!-- start: PAGE HEADER -->
+       <div class="row">
+        <div class="col-sm-12">
+            
+            <!-- start: PAGE TITLE & BREADCRUMB -->
+            <ol class="breadcrumb">
+            
+             <li class="breadcrumb-item" >
+                 <a routerLink="/"> <i class="fa fa-home"></i>&nbsp;Home </a>
+             </li>
+                <li class="breadcrumb-item active" aria-current="page">View Activites</li>
+            </ol>
+          
+        </div>
+    </div>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Sr. No</th>
+                <th>Activity</th>
+                <th>Activity Date</th>
+                <th>Activity Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let act of actlist; let i=index">
+                <td>{{i+1}}</td>
+                <td>{{act.activity}}</td>
+                <td>{{act.activity_date}}</td>
+                <td>{{act.activity_time}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

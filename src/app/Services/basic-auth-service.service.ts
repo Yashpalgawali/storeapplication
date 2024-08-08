@@ -41,7 +41,7 @@ export class BasicAuthServiceService {
     if(this.getAuthenticatedUser())
       return sessionStorage.getItem('token')
     else
-      return
+      return null
   }
 
   isUserLoggedIn() {

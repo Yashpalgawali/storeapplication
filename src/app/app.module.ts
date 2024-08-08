@@ -32,6 +32,7 @@ import { EditpoproductComponent } from './MyComponents/PoProducts/editpoproduct/
 import { ViewpurchaseorderComponent } from './MyComponents/PurchaseOrder/viewpurchaseorder/viewpurchaseorder.component';
 import { EditpurchaseorderComponent } from './MyComponents/PurchaseOrder/editpurchaseorder/editpurchaseorder.component';
 import { ViewinvoicetemplateComponent } from './MyComponents/Invoice/viewinvoicetemplate/viewinvoicetemplate.component';
+import { ActivityComponent } from './MyComponents/activity/activity.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { ViewinvoicetemplateComponent } from './MyComponents/Invoice/viewinvoice
     EditpoproductComponent,
     ViewpurchaseorderComponent,
     EditpurchaseorderComponent,
-    ViewinvoicetemplateComponent
+    ViewinvoicetemplateComponent,
+    ActivityComponent
   ],
   imports: [
     BrowserModule,

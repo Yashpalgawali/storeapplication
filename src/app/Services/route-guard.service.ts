@@ -12,9 +12,14 @@ export class RouteGuardService {
 
   canActivate(route : ActivatedRouteSnapshot,state : RouterStateSnapshot) {
     if(this.basicauthserv.isUserLoggedIn())
-    return true;
-  else
+    {
+      alert('if part')
+      return true
+    }
+  else{
+    alert('else part')
     this.router.navigate(['login']);
     return false;
    }
+  }
 }

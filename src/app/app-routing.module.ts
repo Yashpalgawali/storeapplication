@@ -22,6 +22,7 @@ import { EditvendorComponent } from './MyComponents/Vendor/editvendor/editvendor
 import { ViewpurchaseorderComponent } from './MyComponents/PurchaseOrder/viewpurchaseorder/viewpurchaseorder.component';
 import { EditpurchaseorderComponent } from './MyComponents/PurchaseOrder/editpurchaseorder/editpurchaseorder.component';
 import { ViewinvoicetemplateComponent } from './MyComponents/Invoice/viewinvoicetemplate/viewinvoicetemplate.component';
+import { ActivityComponent } from './MyComponents/activity/activity.component';
 
 const routes: Routes = [
     {path : "product" , component : AddproductComponent,canActivate : [RouteGuardService]},
@@ -47,6 +48,8 @@ const routes: Routes = [
     {path : "addpurchaseorder" , component : AddpurchaseorderComponent, canActivate : [RouteGuardService]},
     {path : "viewpurchaseorder" , component : ViewpurchaseorderComponent, canActivate : [RouteGuardService]},
     {path : "edit/purchaseorder/:id" , component : EditpurchaseorderComponent, canActivate : [RouteGuardService]},
+
+    {path : "activity" , component : ActivityComponent, canActivate : [RouteGuardService]},
 
     {path : "login" , component : LoginComponent },
     {path : "" , component : LoginComponent },
