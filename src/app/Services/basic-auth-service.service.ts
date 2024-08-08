@@ -45,6 +45,7 @@ export class BasicAuthServiceService {
   }
 
   isUserLoggedIn() {
+   
     let user = sessionStorage.getItem('token')
         return !(user === null)
   }

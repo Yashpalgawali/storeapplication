@@ -43,4 +43,9 @@ export class ViewcustomersComponent {
           },
       })
   }
+  
+  getcustomerbyid(customer_id : number) {
+
+    this.router.navigate(['/edit/customer/',customer_id])
+  }
 }
