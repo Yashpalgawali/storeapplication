@@ -25,7 +25,6 @@ export class ViewcustomersComponent {
               {
                 this.response = sessionStorage.getItem('response')
                 setTimeout(() => {
-                  
                   sessionStorage.removeItem('response')
                   this.response=""
                 }, 3000);
@@ -34,12 +33,10 @@ export class ViewcustomersComponent {
               {
                 this.reserr = sessionStorage.getItem('reserr')
                 setTimeout(() => {
-                
                   sessionStorage.removeItem('reserr')
                   this.reserr=""
                 }, 3000);
               }
-              
           },
       })
   }

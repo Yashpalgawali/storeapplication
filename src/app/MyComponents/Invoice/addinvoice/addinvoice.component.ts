@@ -49,11 +49,9 @@ export class AddinvoiceComponent implements OnInit{
       this.teinvserv.getTempInvoicesbyTempInvoiceId(tempid).subscribe({
         next:(data) => {
           this.tempinvlist = data
-          alert(JSON.stringify(data))
         },
       });
     }
-
   }
 
   onFocusOutEvent(event: any)

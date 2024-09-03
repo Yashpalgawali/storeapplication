@@ -1,0 +1,13 @@
+<div class="container">
+    <form (ngSubmit)="addPrefix()"  method="post">
+        <div class="form-group">
+            <label for="fin_year">Financial Year</label>
+                <input type="text" name="fin_year" id="fin_year" [(ngModel)]="prefix.fin_year" class="form-control mb-3">
+        </div>
+        <div class="form-group">
+            <label for="prefix">Financial Prefix</label>
+                <input type="text" name="prefix" id="prefix" [(ngModel)]="prefix.prefix" class="form-control mb-3">
+        </div>
+    </form>
+
+</div>

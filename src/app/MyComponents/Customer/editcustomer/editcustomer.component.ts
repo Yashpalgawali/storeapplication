@@ -20,11 +20,12 @@ export class EditcustomerComponent implements OnInit {
 
     this.custserv.getCustomerById(this.cust_id).subscribe({
       next:(data) =>{
+        alert(JSON.stringify(data))
           this.customer = data
       },
       error : (err) => {
           sessionStorage.setItem('reserr','No Customer found for given ID')
-          this.router.navigate(['/viewcustomer'])
+          this.router.navigate(['viewcustomers'])
       },
     })
   }
@@ -33,11 +34,11 @@ export class EditcustomerComponent implements OnInit {
     this.custserv.updateCustomer(this.customer).subscribe({
        complete:()=> {
            sessionStorage.setItem('response',this.customer.cust_first_name+' '+this.customer.cust_last_name+' is updated successfully')
-           this.router.navigate(['/viewcustomer'])
+           this.router.navigate(['viewcustomers'])
        },
        error : (err) => {
         sessionStorage.setItem('reserr',this.customer.cust_first_name+' '+this.customer.cust_last_name+' is not updated')
-        this.router.navigate(['/viewcustomer'])
+        this.router.navigate(['viewcustomers'])
        },
     })
   }

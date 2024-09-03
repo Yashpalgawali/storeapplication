@@ -66,6 +66,14 @@
               <li><a ngbDropdownItem class="dropdown-item" routerLink="viewpurchaseorder">View Purchase Order</a></li>
            </ul>
         </li>
+
+        <li ngbDropdown class="nav-item dropdown">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Docket</a>
+           <ul ngbDropdownMenu class="dropdown-menu">
+             <li><a ngbDropdownItem class="dropdown-item" routerLink="adddocket">Add Docket </a></li>
+              <li><a ngbDropdownItem class="dropdown-item" routerLink="viewdockets">View Docket</a></li>
+           </ul>
+        </li>
         
         <li class="nav-item"><a class="nav-link active" routerLink="/activity"> Activities</a></li>
         <hr>
@@ -93,36 +101,14 @@
             </button>
           <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
-              <li><a  class="nav-link" routerLink ="login">Login</a></li>
-            
+              <li>
+                <a  class="nav-link" routerLink ="login">Login</a></li>
             </ul>
           </div>
-      </nav>
+      </nav> 
     </div>
 
-
-      <!--/row-->
-      
-      <!-- <div >
-        <nav class="navbar navbar-expand-md navbar-light bg-light  fixed-top ">
-     -->
-          <!--   <a class="navbar-brand  " routerLink=" "><img  src="img/savera_logo.jpg}  "id="c_logo  "></a> -->
-              <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-              <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link active" routerLink="/"><i class="fa fa-home" style="color:blue;"></i>&nbsp;Home</a></li>
-                <li class="nav-item"><a class="nav-link active" routerLink="/bookappointment"><i class="fas fa-calendar"></i>&nbsp;Book Appointment</a>
-                <li class="nav-item"><a class="nav-link active" routerLink="/searchappointment"><i class="fa-solid fa-magnifying-glass"></i>&nbsp;Search Appointment</a>
-                <li class="nav-item"><a class="nav-link active"  routerLink="/login"><i class="fas fa-sign-in-alt"></i>&nbsp;Login</a>
-             
-              </ul>
-            </div>
-            </nav>
-</div> -->
-      <!--/row-->
-<router-outlet></router-outlet>
+<router-outlet  ></router-outlet>
 <footer class="footer text-center">
   <div class="container">
     <span>All Rights Reserved &#64;Company</span>

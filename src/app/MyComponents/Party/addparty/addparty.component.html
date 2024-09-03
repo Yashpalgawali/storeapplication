@@ -1,0 +1,10 @@
+<div class="container">
+    <form (ngSubmit)="saveParty()" method="post">
+        <div class="form-group">
+            <label for="party_name">Party Name</label>
+                <input type="hidden" name="party_id" [(ngModel)]="party.party_id">
+                <input type="text" name="party_name" id="party_name" class="form-control mb-3" [(ngModel)]="party.party_name" required>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Add Party" />
+    </form>
+</div>

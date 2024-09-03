@@ -24,6 +24,11 @@ import { EditpurchaseorderComponent } from './MyComponents/PurchaseOrder/editpur
 import { ViewinvoicetemplateComponent } from './MyComponents/Invoice/viewinvoicetemplate/viewinvoicetemplate.component';
 import { ActivityComponent } from './MyComponents/activity/activity.component';
 import { EditcustomerComponent } from './MyComponents/Customer/editcustomer/editcustomer.component';
+import { AddprefixComponent } from './MyComponents/Prefix/addprefix/addprefix.component';
+import { AdddocketComponent } from './MyComponents/Docket/adddocket/adddocket.component';
+import { ViewdocketComponent } from './MyComponents/Docket/viewdocket/viewdocket.component';
+import { AddpartyComponent } from './MyComponents/Party/addparty/addparty.component';
+import { ViewpartyComponent } from './MyComponents/Party/viewparty/viewparty.component';
 
 const routes: Routes = [
     {path : "product" , component : AddproductComponent,canActivate : [RouteGuardService]},
@@ -52,6 +57,16 @@ const routes: Routes = [
     {path : "edit/purchaseorder/:id" , component : EditpurchaseorderComponent, canActivate : [RouteGuardService]},
 
     {path : "activity" , component : ActivityComponent, canActivate : [RouteGuardService]},
+
+    {path : "addprefix" , component : AddprefixComponent, canActivate : [RouteGuardService]},
+
+    {path : "adddocket" , component : AdddocketComponent, canActivate : [RouteGuardService]},
+    {path : "edit/docket/:id" , component : AdddocketComponent, canActivate : [RouteGuardService]},
+    {path : "viewdockets" , component : ViewdocketComponent, canActivate : [RouteGuardService]},
+
+    {path : "addparty" , component : AddpartyComponent, canActivate : [RouteGuardService]},
+    {path : "edit/party/:id" , component : AddpartyComponent, canActivate : [RouteGuardService]},
+    {path : "viewparties" , component : ViewpartyComponent, canActivate : [RouteGuardService]},
 
     {path : "login" , component : LoginComponent },
     {path : "" , component : LoginComponent },

@@ -1,4 +1,5 @@
 <div class="container" style="background-color:#fff">
+  <div style="page-break-after: always;">
     <div class="col-sm-8 col-xs-8" >
         <h3 style="margin-top:8px;">Tidy Casa Private Limited.</h3>
         <p>Anjali complex, Khadkeshwar,Aurangabad 431001 Maharashtra <br>Contact: 0240-2244241,Tollfree No: 1800-233-1881</p>
@@ -95,7 +96,7 @@
                     <td  style="font-size:12px;padding:5px;text-align:right"> {{prod.cgst_per}}%</td>
                     <td  style="font-size:12px;padding:5px;text-align:right"> {{prod.sgst_per}}%</td>
                     <td  style="font-size:12px;padding:5px;text-align:right"> {{prod.igst_per}}%</td>
-                    <td  style="font-size:12px;padding:5px;text-align:right">{{prod.price}}</td>
+                    <td  style="font-size:12px;padding:5px;text-align:right">{{prod.price*prod.qty}}</td>
 
                  </tr>
                  <tr style="border-top:1px solid #999;border-bottom:1px solid #999">
@@ -151,6 +152,7 @@
   </tbody>
 </table>
 </div>
+</div>
 <div align="center">
   <button type="buttton" onclick="window.print()" name="print" class="print btn btn-success btn-md">Print</button>
   </div>
@@ -158,8 +160,24 @@
   <style>
   @media print {
     .print{
-    display:none;
+        display:none;
     }
-    
   }
+
+  .table >tbody>tr>td{
+		border:1px solid #999;
+	}
+	.table >thead>tr>td{
+		border:1px solid #999;
+	}
+	.noborder>tbody>tr>td{
+		border:0;
+		border-right:1px solid #999;
+		border-left:1px solid #999;
+	}
+	.noborder{
+		border-top:1px solid #999;
+		border-bottom:1px solid #999;
+		
+	}
   </style>

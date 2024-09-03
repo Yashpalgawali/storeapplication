@@ -45,7 +45,7 @@ export class ViewinvoicetemplateComponent implements  OnInit {
     this.invserv.getInvoiceById(this.invoice_num).subscribe({
       next:(data) =>{
         this.invoice = data
-        alert(JSON.stringify(data))
+        
         this.custserv.getCustomerById(this.invoice.customer.customer_id).subscribe({
           next :(res) =>{
             this.customer = res 

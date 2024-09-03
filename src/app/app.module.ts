@@ -33,6 +33,11 @@ import { ViewpurchaseorderComponent } from './MyComponents/PurchaseOrder/viewpur
 import { EditpurchaseorderComponent } from './MyComponents/PurchaseOrder/editpurchaseorder/editpurchaseorder.component';
 import { ViewinvoicetemplateComponent } from './MyComponents/Invoice/viewinvoicetemplate/viewinvoicetemplate.component';
 import { ActivityComponent } from './MyComponents/activity/activity.component';
+import { AddprefixComponent } from './MyComponents/Prefix/addprefix/addprefix.component';
+import { AdddocketComponent } from './MyComponents/Docket/adddocket/adddocket.component';
+import { ViewdocketComponent } from './MyComponents/Docket/viewdocket/viewdocket.component';
+import { AddpartyComponent } from './MyComponents/Party/addparty/addparty.component';
+import { ViewpartyComponent } from './MyComponents/Party/viewparty/viewparty.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +64,12 @@ import { ActivityComponent } from './MyComponents/activity/activity.component';
     ViewpurchaseorderComponent,
     EditpurchaseorderComponent,
     ViewinvoicetemplateComponent,
-    ActivityComponent
+    ActivityComponent,
+    AddprefixComponent,
+    AdddocketComponent,
+    ViewdocketComponent,
+    AddpartyComponent,
+    ViewpartyComponent
   ],
   imports: [
     BrowserModule,
