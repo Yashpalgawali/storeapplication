@@ -2,18 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Docket } from 'src/app/Models/Docket';
 import { DocketService } from 'src/app/Services/docket.service';
+import { PartyService } from 'src/app/Services/party.service';
 
 @Component({
   selector: 'app-adddocket',
   templateUrl: './adddocket.component.html',
   styleUrls: ['./adddocket.component.css']
 })
-export class AdddocketComponent implements OnInit{
+export class AdddocketComponent implements OnInit {
 
   docket : Docket = new Docket()
   docket_id !: number
+  partylist : any
+  constructor(private router :Router,private docketserv : DocketService,private route : ActivatedRoute,
+              private partyserv : PartyService
+  ) { }
 
-  constructor(private router :Router,private docketserv : DocketService,private route : ActivatedRoute) { }
   ngOnInit(): void { 
     this.docket_id = this.route.snapshot.params['id']
     if(this.docket_id>0) {
@@ -24,10 +28,16 @@ export class AdddocketComponent implements OnInit{
       })
     }
 
+    this.partyserv.getAllParties().subscribe({
+      next: (data) => {
+          this.partylist = data
+      },
+    })
   }
 
   saveDocket() {
     if(this.docket.docket_id>0){
+      alert('Docket ID = '+this.docket.docket_id+' Docket data = '+JSON.stringify(this.docket))
       this.docketserv.updateDocket(this.docket).subscribe({
         complete:()=> {
           sessionStorage.setItem('response','Docket is Updated successfully!!')
@@ -40,6 +50,7 @@ export class AdddocketComponent implements OnInit{
       })
     }
     else {
+      alert('inside saveDocket()')
       this.docketserv.saveDocket(this.docket).subscribe({
         next : (data) => {
           sessionStorage.setItem('response','Docket is saved successfully!!')

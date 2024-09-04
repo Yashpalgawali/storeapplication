@@ -1,7 +1,10 @@
+import { Party } from "./Party"
+
 export class Docket {
     docket_id !: number
     order_id !: number
-    customer_name !: string
-    docket_no !: string
-    party_name !: string
+    cust_name !: string
+    docket_num !: string
+    //party_name !: string
+    party : Party = new Party()
 }

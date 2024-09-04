@@ -18,28 +18,31 @@
          
          <div class="form-group">
            <label for="order_id">Order Id</label>
+           <input type="hidden" name="docket_id" [(ngModel)]="docket.docket_id" required>
              <input class="form-control mb-3" placeholder="Enter Order Id" type="text" [(ngModel)]="docket.order_id" id="order_id" name="vendor_name" id="order_id" required />
          </div>
          
          <div class="form-group">
            <label for="customer_name">Customer Name</label>
-             <input class="form-control mb-3" placeholder="Enter Customer Name" [(ngModel)]="docket.customer_name" type="text" id="customer_name" name="customer_name" required />
-         </div>
-         
-         <div class="form-group">
-           <label for="party_name">VParty Name</label>
-             <input class="form-control mb-3" placeholder="Enter Party Name" [(ngModel)]="docket.party_name" type="text" id="party_name" name="party_name" required />
-         </div>
-         
-         <div class="form-group">
-           <label for="docket_no">Docket Number</label>
-             <input class="form-control mb-3" placeholder="Enter Docket Number" type="text" [(ngModel)]="docket.docket_no" id="docket_no" name="docket_no" required />
+             <input class="form-control mb-3" placeholder="Enter Customer Name" [(ngModel)]="docket.cust_name" type="text" id="customer_name" name="customer_name" required />
          </div>
           
-         
-         <input type="submit"  value="Submit" class="btn btn-primary">
-                          
+         <div class="form-group">
+            <label for="party">Party Name</label>
+              <select id="party" name="party" [(ngModel)]="docket.party" required class="form-control mb-3" style="width:50%;" >
+                <option selected disabled>Please Select Party</option>
+                  <option *ngFor="let party of partylist" [ngValue]="party">{{party.party_name}}</option>
+              </select>
+          </div>
+         <div class="form-group">
+           <label for="docket_no">Docket Number</label>
+             <input class="form-control mb-3" placeholder="Enter Docket Number" type="text" [(ngModel)]="docket.docket_num" id="docket_no" name="docket_no" required />
+         </div>
+
+         <input type="submit" value="Add Docket" class="btn btn-primary"> &nbsp;
+         <input type="reset" value="Clear" class="btn btn-primary">
         </form>
     </div>
   </div>
 </div>
+ 

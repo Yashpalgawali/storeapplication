@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { PurchaseOrder } from 'src/app/Models/PurchaseOrder';
 import { PurchaseOrderProducts } from 'src/app/Models/PurchaseOrderProducts';
 import { PoproductService } from 'src/app/Services/poproduct.service';
-import { ProductService } from 'src/app/Services/product.service';
 import { PurchaseorderService } from 'src/app/Services/purchaseorder.service';
 import { PurchaseorderproductsService } from 'src/app/Services/purchaseorderproducts.service';
 
@@ -20,19 +19,17 @@ export class AddpurchaseorderComponent implements OnInit {
 
   constructor(private router : Router , private poprodserv : PoproductService, 
               private purchaseordprodserv : PurchaseorderproductsService ,
-              private vendserv : VendorService,private purchaseorderservice : PurchaseorderService) {
-              
-               }
+              private vendserv : VendorService,private purchaseorderservice : PurchaseorderService) { }
   
   prodlist : any
   po_prod_list : any
   purchase_order : PurchaseOrder =new PurchaseOrder()
   po_product : PurchaseOrderProducts =new PurchaseOrderProducts()
   tempid :any
-vendlist :any
+  vendlist :any
 
   ngOnInit(): void {
-
+ 
     this.vendserv.getAllVendors().subscribe({
       next:(data)=> {
           this.vendlist = data
@@ -51,15 +48,13 @@ vendlist :any
     {
       this.purchaseordprodserv.getPurchaseOrderProductsByTempId(this.tempid).subscribe({
         next:(data)=> {
-          console.log(JSON.stringify(data))
-          this.po_prod_list =data  
+            this.po_prod_list = data
         },
         error : (err)=>{
           alert("error")
         }
       })
     }
-      
   }
 
   savePurchaseOrderProducts(purchase_prod : NgForm)

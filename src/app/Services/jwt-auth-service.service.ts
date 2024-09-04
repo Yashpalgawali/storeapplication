@@ -48,17 +48,15 @@ export class JwtAuthServiceService {
   }
   
   getAuthenticatedToken() {
-    if(this.getAuthenticatedUser()!=null)
-    {
+    if(this.getAuthenticatedUser()!=null) {
       return sessionStorage.getItem('token') 
     }
-
     else
       return
   }
 
   isUserLoggedIn() {
-    if(sessionStorage.getItem('authenticatedUser')!=null || sessionStorage.getItem('authenticatedUser')!='')
+    if(sessionStorage.getItem('authenticatedUser')!=null || localStorage.getItem('authenticatedUser')!='')
     {
       let user = sessionStorage.getItem('token')
       return !(user === null)

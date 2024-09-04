@@ -10,7 +10,7 @@
         </div>
         <div class="form-group">
             <label for="qty">Quantity</label>
-                <input type="number" name="qty" class="form-control" [(ngModel)]="po_product.qty" id="qty">
+                <input type="number" name="qty" class="form-control" [(ngModel)]="po_product.qty" id="qty" min="1">
         </div>
         <label>Select State</label><br>
         <div class="form-check mb-1">
@@ -19,14 +19,13 @@
         </div>
             
         <div class="form-check  mb-1">
-                <input type="radio" class="form-check-input" id="other" [(ngModel)]="po_product.stoption" name="stoption" value="ot">
-                <label class="form-check-label" for="other">Other</label>
+            <input type="radio" class="form-check-input" id="other" [(ngModel)]="po_product.stoption" name="stoption" value="ot">
+            <label class="form-check-label" for="other">Other</label>
         </div>
       <button class="btn btn-primary" >Add Purchase Order</button>
     </form>
 
-
-    <div class="col-sm-12">
+    <div class="col-sm-12 mt-2">
         <div class="card-header">
             <strong>Invoice Product List </strong>
         </div>
@@ -42,7 +41,6 @@
                <td>SGST</td>
                <td>IGST</td>
                <td>Total</td>
-               <!-- <td>Action</td> -->
            </tr>
        </thead>
        <tbody>
@@ -52,10 +50,10 @@
                     <td>{{prod.product.prod_hsn}}</td>
                     <td>{{prod.product.prod_price}}</td>
                     <td>{{prod.qty}}</td>
-                    <td>{{prod.cgst}}</td>
-                    <td>{{prod.sgst}}</td>
-                    <td>{{prod.igst}}</td>
-                    <td>{{prod.total}}</td>
+                    <td>{{prod.cgst}} ({{prod.cgst_per}}%)</td>
+                    <td>{{prod.sgst}} ({{prod.sgst_per}}%)</td>
+                    <td>{{prod.igst}} ({{prod.igst_per}}%)</td>
+                    <td>{{prod.total}} </td>
             </tr>
        </tbody>
      </table>
@@ -65,7 +63,7 @@
             <div class="form-group mb-3">
                 <label for="vendor">Select Vendor</label>
                  <select name="vendor" id="vendor" class="form-control" placeholder="Select Vendor" [(ngModel)]="purchase_order.vendor"> 
-                    <option>Please Select Vendor</option>
+                    <option selected disabled>Please Select Vendor</option>
                         <option *ngFor="let vendor of vendlist" [ngValue]="vendor">{{vendor.vendor_name}}</option>
                  </select>
               </div>
