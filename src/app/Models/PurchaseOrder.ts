@@ -3,7 +3,11 @@ import { Vendor } from "./Vendor"
 
 export class PurchaseOrder {
 
-     po_order_id !: number
+     po_id !: number
+     po_no !: number
+     po_date !: string
+     prefix!: string
+     total_amount !: number
      prepared_by !: string
      transport_charge !: number
      packing_charge !: number

@@ -30,6 +30,8 @@ export class AddpurchaseorderComponent implements OnInit {
 
   ngOnInit(): void {
  
+     
+
     this.vendserv.getAllVendors().subscribe({
       next:(data)=> {
           this.vendlist = data
@@ -75,17 +77,17 @@ export class AddpurchaseorderComponent implements OnInit {
   savePurchaseOrder() {
     console.log(JSON.stringify(this.purchase_order))
     // alert('Inside savepurchaseorder \n '+JSON.stringify(purchase_ord))
-    // this.purchaseorderservice.savePurchaseOrder(purchase_ord).subscribe({
-    //   complete:()=> {
-    //     sessionStorage.removeItem('po_temp_id')
-    //     sessionStorage.setItem('response','Purchase Order is saved successfully')
-    //       this.router.navigate(['viewpurchaseorder'])
-    //   },
-    //   error: (err) => {
-    //     sessionStorage.setItem('reserr','Purchase Order is not saved')
-    //     this.router.navigate(['viewpurchaseorder'])
-    //   },
-    // })
+    this.purchaseorderservice.savePurchaseOrder(this.purchase_order).subscribe({
+      complete:()=> {
+        sessionStorage.removeItem('po_temp_id')
+        sessionStorage.setItem('response','Purchase Order is saved successfully')
+          this.router.navigate(['viewpurchaseorder'])
+      },
+      error: (err) => {
+        sessionStorage.setItem('reserr','Purchase Order is not saved')
+        this.router.navigate(['viewpurchaseorder'])
+      },
+    })
      
   }
 }

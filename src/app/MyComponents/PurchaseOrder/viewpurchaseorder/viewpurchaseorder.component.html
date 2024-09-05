@@ -5,17 +5,25 @@
     <table class="table table-hover table-striped">
         <thead>
             <th>Sr No.</th>
-            <th>Name</th>
-            <th>Name</th>
-            <th>Name</th>
+            <th>PO No</th>
+            <th>Date Added</th>
+            <th>To</th>
+            <th>Ship To</th>
+            <th>Contact</th>
+            <th>Total</th>
+            <th>Action</th>
         </thead>
         <tbody>
             
             <tr *ngFor="let po of polist ; let i =index">
                 <td>{{i+1}}</td>
-                <td>{{po.vendor_name}}</td>
-                <td>{{po.vendor_name}}</td>
-                <td>{{po.vendor_name}}</td>
+                <td>{{po.prefix}}/{{po.po_no}}</td>
+                <td>{{po.po_date}}</td>
+                <td>Tidycasa</td>
+                    <td>{{po.vendor.vendor_name}}</td>
+                    <td>{{po.vendor.vendor_contact}}</td>
+                    <td>{{po.total_amount}}</td>
+                    <td> <button class="btn btn-primary"><i class="fa fa-eye"></i> </button></td>
             </tr>
         </tbody>
     </table>

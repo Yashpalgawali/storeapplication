@@ -19,6 +19,7 @@ export class AddprefixComponent implements OnInit {
   ngOnInit(): void {
      
     this.prefixserv.getAllPrefixes().forEach(pre=>{
+      alert(JSON.stringify(pre[0]))
       this.prefix = pre[0]
     })
   }
