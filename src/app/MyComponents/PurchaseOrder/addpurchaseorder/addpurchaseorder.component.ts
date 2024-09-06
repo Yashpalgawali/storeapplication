@@ -28,16 +28,12 @@ export class AddpurchaseorderComponent implements OnInit {
   tempid :any
   vendlist :any
 
-  ngOnInit(): void {
- 
-     
-
+  ngOnInit(): void { 
     this.vendserv.getAllVendors().subscribe({
       next:(data)=> {
           this.vendlist = data
       },
-    })
-
+    }) 
     this.poprodserv.getAllPoProducts().subscribe({
       next :(data) =>{
           this.prodlist = data

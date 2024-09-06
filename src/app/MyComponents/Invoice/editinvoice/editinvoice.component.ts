@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Invoice } from 'src/app/Models/Invoice';
 import { Temp_Invoice } from 'src/app/Models/Temp_Invoice';
@@ -29,14 +30,10 @@ export class EditinvoiceComponent implements OnInit{
       let invid = this.route.snapshot.params['id']
       this.invserv.getInvoiceById(invid).subscribe({
         next :(data) => {
-            this.invoice = data
-            alert("Invoice found \n "+JSON.stringify(this.invoice))
-            
+            this.invoice = data 
             this.tempinvserv.getTempInvoicesbyTempInvoiceId(this.invoice.order_id).subscribe({
               next:(data) => {
-                this.tempinvlist = data
-
-                alert("Inside tempinvoice \n"+ JSON.stringify(this.tempinvlist))
+                this.tempinvlist = data 
               }
 
             })
@@ -66,13 +63,38 @@ export class EditinvoiceComponent implements OnInit{
     (<HTMLInputElement>document.getElementById("unit_price")).value = ""+res;
   }
 
-  saveTempInvoice () {
+  saveTempInvoice (tmpinv : NgForm) {
 
+    this.tempinvserv.saveTempInvoice(this.tempinvoice).subscribe({
+      next:(data)=>{
+        this.tempinvlist = data
+        sessionStorage.setItem('temp_invoice_id',JSON.stringify(this.tempinvlist[0]['temp_invoice_id']))
+        tmpinv.reset()
+      },
+      error:(e)=>{
+        alert('failed')
+      }
+    })
   }
 
 
   updateInvoice()
   {
 
+  }
+
+  deleteTempInvoiceProductbyId(invnum : string) {
+    let res = confirm('Do you want remove this product?')
+    if(res){
+        this.tempinvserv.deleteTempInvoiceProductById(invnum).subscribe({
+          next:(data)=>{
+              alert('Product removed successfully!! '+data)
+              this.ngOnInit()
+          },
+          error : (err) => {
+              alert('Product not removed from list')
+          },
+        })
+    }
   }
 }

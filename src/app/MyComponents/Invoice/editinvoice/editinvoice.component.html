@@ -17,7 +17,7 @@
     <div class="card-header"> <h4>Edit Invoice</h4> </div>
     
     <div class="card-body">
-       <form  (ngSubmit)="saveTempInvoice()">
+       <form  (ngSubmit)="saveTempInvoice(tmpinv)" #tmpinv="ngForm">
          <div class="form-group">
            <label for="product">Product</label>
              <select id="product" name="product" class="form-control mb-3" [(ngModel)]="tempinvoice.product">
@@ -68,7 +68,7 @@
                 <td>SGST</td>
                 <td>IGST</td>
                 <td>Total</td>
-                <!-- <td>Action</td> -->
+                <td>Action</td>
             </tr>
         </thead>
         
@@ -90,12 +90,14 @@
                     <td>{{tempinv.sgst}}({{tempinv.cgst_per}}%)</td>
                 </ng-container>
                 <td>{{tempinv.total}}</td>
+                <td><button (click)="deleteTempInvoiceProductbyId(tempinv.temp_id)" style="color: red;"> X</button></td>
             </tr>
         </tbody>
       </table>
 
       <form  (ngSubmit)="updateInvoice()">
         <div class="form-group">
+            <input type="hidden" name="invoice_id" [(ngModel)]="invoice.invoice_id">
           <label for="customer">Customer</label>
             <select id="customer" name="customer" class="form-control mb-3" [(ngModel)]="invoice.customer">
                 <option selected>Please Select Customer</option>

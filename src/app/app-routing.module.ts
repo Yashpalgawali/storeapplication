@@ -29,6 +29,7 @@ import { AdddocketComponent } from './MyComponents/Docket/adddocket/adddocket.co
 import { ViewdocketComponent } from './MyComponents/Docket/viewdocket/viewdocket.component';
 import { AddpartyComponent } from './MyComponents/Party/addparty/addparty.component';
 import { ViewpartyComponent } from './MyComponents/Party/viewparty/viewparty.component';
+import { PrintpurchaseorderComponent } from './MyComponents/PurchaseOrder/printpurchaseorder/printpurchaseorder.component';
 
 const routes: Routes = [
     {path : "product" , component : AddproductComponent,canActivate : [RouteGuardService]},
@@ -55,6 +56,7 @@ const routes: Routes = [
     {path : "addpurchaseorder" , component : AddpurchaseorderComponent, canActivate : [RouteGuardService]},
     {path : "viewpurchaseorder" , component : ViewpurchaseorderComponent, canActivate : [RouteGuardService]},
     {path : "edit/purchaseorder/:id" , component : EditpurchaseorderComponent, canActivate : [RouteGuardService]},
+    {path : "view/purchaseorder/:id" , component :  PrintpurchaseorderComponent ,canActivate : [RouteGuardService]},
 
     {path : "activity" , component : ActivityComponent, canActivate : [RouteGuardService]},
 

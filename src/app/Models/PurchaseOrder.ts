@@ -4,7 +4,9 @@ import { Vendor } from "./Vendor"
 export class PurchaseOrder {
 
      po_id !: number
-     po_no !: number
+     
+     order_id !: number
+
      po_date !: string
      prefix!: string
      total_amount !: number

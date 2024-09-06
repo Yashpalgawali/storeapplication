@@ -68,7 +68,7 @@
                 <td>SGST</td>
                 <td>IGST</td>
                 <td>Total</td>
-                <!-- <td>Action</td> -->
+                <td>Action</td>
             </tr>
         </thead>
         
@@ -91,6 +91,7 @@
                     <td>{{tempinv.igst}}({{tempinv.igst_per}}%)</td>
                 </ng-container>
                 <td>{{ tempinv.total}}</td>
+                <td><button (click)="deleteTempInvoiceProductbyId(tempinv.temp_id)" style="color: red;"> X</button></td>
             </tr>
         </tbody>
       </table>

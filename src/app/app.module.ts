@@ -38,6 +38,7 @@ import { AdddocketComponent } from './MyComponents/Docket/adddocket/adddocket.co
 import { ViewdocketComponent } from './MyComponents/Docket/viewdocket/viewdocket.component';
 import { AddpartyComponent } from './MyComponents/Party/addparty/addparty.component';
 import { ViewpartyComponent } from './MyComponents/Party/viewparty/viewparty.component';
+import { PrintpurchaseorderComponent } from './MyComponents/PurchaseOrder/printpurchaseorder/printpurchaseorder.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { ViewpartyComponent } from './MyComponents/Party/viewparty/viewparty.com
     AdddocketComponent,
     ViewdocketComponent,
     AddpartyComponent,
-    ViewpartyComponent
+    ViewpartyComponent,
+    PrintpurchaseorderComponent
   ],
   imports: [
     BrowserModule,

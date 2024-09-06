@@ -28,4 +28,10 @@ export class TempinvoiceService {
   {
     return this.http.get<Temp_Invoice[]>(`${this.app_url}${tid}`);
   }
+
+  public deleteTempInvoiceProductById(prod_id : string):Observable<string>
+  {
+    return this.http.delete<string>(`${this.app_url}removeitem/${prod_id}`);
+  }
+
 }

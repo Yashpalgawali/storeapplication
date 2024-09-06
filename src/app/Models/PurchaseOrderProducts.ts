@@ -1,4 +1,5 @@
-import { Product } from "./Product"
+import { PoProductsList } from "./PoProductsList"
+import { PurchaseOrder } from "./PurchaseOrder"
 
 export class PurchaseOrderProducts {
 
@@ -14,5 +15,7 @@ export class PurchaseOrderProducts {
 	  igst !: number	
 	  unit_price !: number	
       total !: number
-	  product : Product = new Product()
+	  product : PoProductsList = new PoProductsList()
+
+	  po_id : PurchaseOrder =new PurchaseOrder()
 }

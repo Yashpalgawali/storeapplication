@@ -92,4 +92,19 @@ export class AddinvoiceComponent implements OnInit{
     })
   }
 
+
+  deleteTempInvoiceProductbyId(invnum : string) {
+    let res = confirm('Do you want remove this product?')
+    if(res){
+        this.teinvserv.deleteTempInvoiceProductById(invnum).subscribe({
+          next:(data)=>{
+              alert('Product removed successfully!! '+data)
+              this.ngOnInit()
+          },
+          error : (err) => {
+              alert('Product not removed from list')
+          },
+        })
+    }
+  }
 }
