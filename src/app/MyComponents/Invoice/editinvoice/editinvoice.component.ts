@@ -5,6 +5,7 @@ import { Invoice } from 'src/app/Models/Invoice';
 import { Temp_Invoice } from 'src/app/Models/Temp_Invoice';
 import { CustomerService } from 'src/app/Services/customer.service';
 import { InvoiceService } from 'src/app/Services/invoice.service';
+import { InvoiceproductService } from 'src/app/Services/invoiceproduct.service';
 import { ProductService } from 'src/app/Services/product.service';
 import { TempinvoiceService } from 'src/app/Services/tempinvoice.service';
 
@@ -17,11 +18,12 @@ export class EditinvoiceComponent implements OnInit{
 
   constructor(private router : Router,private invserv : InvoiceService,private route : ActivatedRoute,
               private prodserv : ProductService,private tempinvserv : TempinvoiceService,
-              private custserv : CustomerService
+              private custserv : CustomerService,private invprodserv : InvoiceproductService
             ){ }
 
   tempinvoice : Temp_Invoice = new Temp_Invoice()
   prodlist : any
+  invprodlist : any 
   invoice :  Invoice = new Invoice()
   tempinvlist : any
   custlist :any
@@ -31,12 +33,11 @@ export class EditinvoiceComponent implements OnInit{
       this.invserv.getInvoiceById(invid).subscribe({
         next :(data) => {
             this.invoice = data 
-            this.tempinvserv.getTempInvoicesbyTempInvoiceId(this.invoice.order_id).subscribe({
-              next:(data) => {
-                this.tempinvlist = data 
-              }
-
-            })
+             this.invprodserv.getInvoiceProductsByOrderId(this.invoice.order_id).subscribe({
+              next :(data) =>{
+                  this.invprodlist = data
+              },
+             })
         },
         error :(err)=> {
             sessionStorage.setItem('reserr','No Invoice found for given ID ');
@@ -86,15 +87,16 @@ export class EditinvoiceComponent implements OnInit{
   deleteTempInvoiceProductbyId(invnum : string) {
     let res = confirm('Do you want remove this product?')
     if(res){
-        this.tempinvserv.deleteTempInvoiceProductById(invnum).subscribe({
-          next:(data)=>{
-              alert('Product removed successfully!! '+data)
-              this.ngOnInit()
-          },
-          error : (err) => {
-              alert('Product not removed from list')
-          },
-        })
+      this.invprodserv.deleteInvoiceProductById(invnum).subscribe({
+        complete:()=>{
+          alert('Product removed successfully!! ')
+          this.ngOnInit()
+        },
+        error: (err) =>{
+          alert('Product not removed from list')
+        },
+      })
+ 
     }
   }
 }
