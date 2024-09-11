@@ -73,6 +73,7 @@ export class JwtAuthServiceService {
     sessionStorage.removeItem('token')
     localStorage.removeItem('authenticatedUser')
     localStorage.removeItem('token')
-    
+    sessionStorage.removeItem('temp_invoice_id')
+    sessionStorage.removeItem('po_temp_id')
   }
 }

@@ -15,6 +15,7 @@ export class Invoice_Product {
 	  igst_per!: number
       order_id !: string
       invoice : Invoice = new Invoice()
-
+	  stoption !: string
+	  custom_price !: number
       product : Product = new Product()
 }

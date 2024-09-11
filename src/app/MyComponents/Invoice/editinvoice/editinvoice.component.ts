@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Invoice } from 'src/app/Models/Invoice';
+import { Invoice_Product } from 'src/app/Models/Invoice_Product';
 import { Temp_Invoice } from 'src/app/Models/Temp_Invoice';
 import { CustomerService } from 'src/app/Services/customer.service';
 import { InvoiceService } from 'src/app/Services/invoice.service';
@@ -14,19 +15,20 @@ import { TempinvoiceService } from 'src/app/Services/tempinvoice.service';
   templateUrl: './editinvoice.component.html',
   styleUrls: ['./editinvoice.component.css']
 })
-export class EditinvoiceComponent implements OnInit{
+export class EditinvoiceComponent implements OnInit {
 
   constructor(private router : Router,private invserv : InvoiceService,private route : ActivatedRoute,
               private prodserv : ProductService,private tempinvserv : TempinvoiceService,
               private custserv : CustomerService,private invprodserv : InvoiceproductService
-            ){ }
+            ) { }
 
   tempinvoice : Temp_Invoice = new Temp_Invoice()
   prodlist : any
   invprodlist : any 
   invoice :  Invoice = new Invoice()
   tempinvlist : any
-  custlist :any
+  custlist : any
+  invproduct : Invoice_Product = new Invoice_Product()
 
   ngOnInit(): void {
       let invid = this.route.snapshot.params['id']
@@ -36,6 +38,7 @@ export class EditinvoiceComponent implements OnInit{
              this.invprodserv.getInvoiceProductsByOrderId(this.invoice.order_id).subscribe({
               next :(data) =>{
                   this.invprodlist = data
+                 
               },
              })
         },
@@ -64,6 +67,18 @@ export class EditinvoiceComponent implements OnInit{
     (<HTMLInputElement>document.getElementById("unit_price")).value = ""+res;
   }
 
+
+  saveInvoiceProduct(invprod : NgForm){
+    
+    // this.invprodserv.addInvoiceProduct(this.invproduct).subscribe({
+    //   next:(data) =>{
+    //     alert('Saved')
+    //   },
+    //   error :(err) =>{
+    //       alert('not saved')
+    //   }
+    // })
+  }
   saveTempInvoice (tmpinv : NgForm) {
 
     this.tempinvserv.saveTempInvoice(this.tempinvoice).subscribe({
@@ -85,10 +100,11 @@ export class EditinvoiceComponent implements OnInit{
   }
 
   deleteTempInvoiceProductbyId(invnum : string) {
+    alert('invoice num '+invnum)
     let res = confirm('Do you want remove this product?')
     if(res){
       this.invprodserv.deleteInvoiceProductById(invnum).subscribe({
-        complete:()=>{
+        next:(data)=>{
           alert('Product removed successfully!! ')
           this.ngOnInit()
         },
@@ -96,7 +112,9 @@ export class EditinvoiceComponent implements OnInit{
           alert('Product not removed from list')
         },
       })
- 
+    }
+    else {
+      alert('Product is not removed')
     }
   }
 }

@@ -43,7 +43,7 @@ export class AddinvoiceComponent implements OnInit{
     });
     let tempid = JSON.parse(sessionStorage.getItem('temp_invoice_id') || '{}' );
     // let tempid = JSON.parse(sessionStorage.getItem('temp_invoice_id')! );
-    
+    alert('temp invoice id '+JSON.stringify(tempid))
     if(sessionStorage.getItem('temp_invoice_id')!=null)
     {
       this.teinvserv.getTempInvoicesbyTempInvoiceId(tempid).subscribe({
@@ -62,12 +62,13 @@ export class AddinvoiceComponent implements OnInit{
   }
 
   saveTempInvoice(tmpinv : NgForm) { 
-        
+      
          this.teinvserv.saveTempInvoice(this.tempinvoice).subscribe({
           next:(data)=>{
             this.tempinvlist = data
             sessionStorage.setItem('temp_invoice_id',JSON.stringify(this.tempinvlist[0]['temp_invoice_id']))
             tmpinv.reset()
+            this.ngOnInit()
           },
           error:(e)=>{
             alert('failed')

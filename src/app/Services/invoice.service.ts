@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { GlobalComponents } from '../GlobalComponents';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Observer } from 'rxjs';
 import { Invoice } from '../Models/Invoice';
 
 @Injectable({
@@ -29,5 +29,10 @@ export class InvoiceService {
   public getInvoiceProductsByOrderId(vid : number):Observable<Invoice[]>
   {
     return this.http.get<Invoice[]>(`${this.app_url}order/${vid}`);
+  }
+
+  public updateInvoiceById(invoice : Invoice):Observable<Invoice>
+  {
+    return this.http.put<Invoice>(`${this.app_url}`,invoice)
   }
 }

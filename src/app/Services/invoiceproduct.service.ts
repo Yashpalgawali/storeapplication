@@ -22,4 +22,8 @@ export class InvoiceproductService {
     let ord_id  = ""+order_id
     return this.http.get<Invoice_Product[]>(`${this.app_url}${ord_id}`)
   }
+
+  public addInvoiceProduct(invprod : Invoice_Product):Observable<Invoice_Product>{
+    return this.http.post<Invoice_Product>(`${this.app_url}`,invprod)
+  }
 }

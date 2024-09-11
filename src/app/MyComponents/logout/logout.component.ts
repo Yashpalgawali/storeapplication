@@ -16,8 +16,7 @@ export class LogoutComponent implements OnInit{
      
     this.jwtauthserv.logout()        
     
-    sessionStorage.removeItem('temp_invoice_id')
-    sessionStorage.removeItem('po_temp_id')
+   
     this.response="Logged Out Successfully"
     sessionStorage.setItem('response',this.response)
     this.router.navigate(['login'])
