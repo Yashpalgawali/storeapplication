@@ -70,9 +70,11 @@ export class ViewinvoicetemplateComponent implements  OnInit {
                 if(this.cgst!=0)
                 {
                   this.cgst_per = +JSON.stringify(this.invprodlist[i].cgst_per)
-                  this.sgst_per = +JSON.stringify(this.invprodlist[i].cgst_per)
+                  //this.sgst_per = +JSON.stringify(this.invprodlist[i].cgst_per)
+                  this.sgst_per = this.cgst_per
                   this.igst_per = 0
                   this.tot_cgst = this.tot_cgst + this.cgst
+                  this.tot_sgst = this.tot_cgst
                 
                 }
                 if(this.igst!=0)
@@ -84,7 +86,7 @@ export class ViewinvoicetemplateComponent implements  OnInit {
                   this.tot_igst = this.tot_igst + this.igst
                 }
                 this.total_qty = this.total_qty + this.qt
-                this.final_total =  this.subtotal+this.cgst+this.sgst+this.igst
+                this.final_total =  this.subtotal+this.tot_cgst+this.tot_sgst+this.tot_igst
               }
           },
           error:(err)=> {
