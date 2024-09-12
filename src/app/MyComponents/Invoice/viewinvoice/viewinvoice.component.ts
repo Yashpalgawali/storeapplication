@@ -10,14 +10,35 @@ import { InvoiceService } from 'src/app/Services/invoice.service';
 export class ViewinvoiceComponent implements OnInit{
   
   invlist : any
+  response : any
+  reserr : any
+
   constructor(private invserv : InvoiceService , private router : Router) {}
 
   ngOnInit(): void {
       this.invserv.getAllInvoices().subscribe({
         next:(data) => {
             this.invlist = data
+
         },
       })
+      
+      if(sessionStorage.getItem('response')!=null){
+        this.response = sessionStorage.getItem('response')
+        setTimeout(() => {
+          sessionStorage.removeItem('response')
+          this.response=""
+        }, 3000);
+      }  
+
+      if(sessionStorage.getItem('reserr')!=null){
+        this.reserr = sessionStorage.getItem('reserr')
+        setTimeout(() => {
+          sessionStorage.removeItem('reserr')
+          this.reserr=""
+        }, 3000);
+      }
+      
   }
 
   getinvoicebyid(invid :number)

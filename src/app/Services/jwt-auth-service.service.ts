@@ -20,7 +20,7 @@ export class JwtAuthServiceService {
     })
      
     // return this.http.get<JwtToken>(`${this.app_url}authenticate`,{ headers : headers}).pipe(
-      return this.http.get<JwtToken>(`${this.app_url}authenticate`, { headers: headers, withCredentials: true }  ).pipe(
+   return this.http.get<JwtToken>(`${this.app_url}authenticate`, { headers: headers, withCredentials: true }  ).pipe(
     map(
                       data=>{ 
                               sessionStorage.setItem('token',data.token)
@@ -69,11 +69,27 @@ export class JwtAuthServiceService {
 
   logout() {
     
+    this.http.post(`${this.app_url}logout`,  {  withCredentials: true })
+    .subscribe({
+        complete: () => {
+          sessionStorage.removeItem('authenticatedUser')
+          sessionStorage.removeItem('token')
+          localStorage.removeItem('authenticatedUser')
+          localStorage.removeItem('token')
+          sessionStorage.removeItem('temp_invoice_id')
+          sessionStorage.removeItem('po_temp_id')         
+          alert('Logged OUT')
+        },
+        error: (err) => {
+            console.error('Logout error:', err);
+        }
+    });
+    
     sessionStorage.removeItem('authenticatedUser')
     sessionStorage.removeItem('token')
     localStorage.removeItem('authenticatedUser')
     localStorage.removeItem('token')
     sessionStorage.removeItem('temp_invoice_id')
-    sessionStorage.removeItem('po_temp_id')
+    sessionStorage.removeItem('po_temp_id')    
   }
 }

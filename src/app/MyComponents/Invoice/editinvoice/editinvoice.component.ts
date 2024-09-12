@@ -38,7 +38,6 @@ export class EditinvoiceComponent implements OnInit {
              this.invprodserv.getInvoiceProductsByOrderId(this.invoice.order_id).subscribe({
               next :(data) =>{
                   this.invprodlist = data
-                 
               },
              })
         },
@@ -70,36 +69,46 @@ export class EditinvoiceComponent implements OnInit {
 
   saveInvoiceProduct(invprod : NgForm){
     
-    // this.invprodserv.addInvoiceProduct(this.invproduct).subscribe({
-    //   next:(data) =>{
-    //     alert('Saved')
-    //   },
-    //   error :(err) =>{
-    //       alert('not saved')
-    //   }
-    // })
+    this.invprodserv.addInvoiceProduct(this.invproduct).subscribe({
+      next:(data) =>{
+        this.ngOnInit()
+      },
+      error :(err) =>{
+          alert('not saved')
+      }
+    })
   }
   saveTempInvoice (tmpinv : NgForm) {
 
-    this.tempinvserv.saveTempInvoice(this.tempinvoice).subscribe({
-      next:(data)=>{
-        this.tempinvlist = data
-        sessionStorage.setItem('temp_invoice_id',JSON.stringify(this.tempinvlist[0]['temp_invoice_id']))
-        tmpinv.reset()
-      },
-      error:(e)=>{
-        alert('failed')
-      }
-    })
+    // this.tempinvserv.saveTempInvoice(this.tempinvoice).subscribe({
+    //   next:(data)=>{
+    //     this.tempinvlist = data
+    //     alert(JSON.stringify((this.tempinvlist[0]['temp_invoice_id'])))
+    //    // sessionStorage.setItem('temp_invoice_id',JSON.stringify(this.tempinvlist[0]['temp_invoice_id']))
+    //     tmpinv.reset()
+    //   },
+    //   error:(e)=>{
+    //     alert('failed')
+    //   }
+    // })
   }
 
 
   updateInvoice()
   {
-
+    this.invserv.updateInvoiceById(this.invoice).subscribe({
+      next:(data)=>{
+        sessionStorage.setItem('response','Invoice is updated successfully')
+        this.router.navigate(['/viewinvoice'])
+      },
+      error:(err) =>{
+        sessionStorage.setItem('reserr','Invoice is not updated')
+        this.router.navigate(['/viewinvoice'])
+      },
+    })
   }
 
-  deleteTempInvoiceProductbyId(invnum : string) {
+  deleteTempInvoiceProductbyId(invnum : number) {
     alert('invoice num '+invnum)
     let res = confirm('Do you want remove this product?')
     if(res){

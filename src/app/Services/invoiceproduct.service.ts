@@ -14,13 +14,13 @@ export class InvoiceproductService {
   
   constructor(private http : HttpClient) { }
 
-  public deleteInvoiceProductById(prod_id : string):Observable<string> { 
+  public deleteInvoiceProductById(prod_id : number):Observable<string> { 
    return this.http.delete<string>(`${this.app_url}delete/${prod_id}`)
   }
 
   public getInvoiceProductsByOrderId(order_id : number):Observable<Invoice_Product[]> {
-    let ord_id  = ""+order_id
-    return this.http.get<Invoice_Product[]>(`${this.app_url}${ord_id}`)
+    
+    return this.http.get<Invoice_Product[]>(`${this.app_url}${order_id}`)
   }
 
   public addInvoiceProduct(invprod : Invoice_Product):Observable<Invoice_Product>{
