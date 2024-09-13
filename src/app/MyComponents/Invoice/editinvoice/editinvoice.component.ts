@@ -31,6 +31,7 @@ export class EditinvoiceComponent implements OnInit {
   invproduct : Invoice_Product = new Invoice_Product()
 
   ngOnInit(): void {
+    
       let invid = this.route.snapshot.params['id']
       this.invserv.getInvoiceById(invid).subscribe({
         next :(data) => {
