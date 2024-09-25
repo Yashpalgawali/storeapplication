@@ -21,14 +21,14 @@ export class InvoiceService {
   {
     return this.http.get<Invoice[]>(`${this.app_url}`);
   }
-  public getInvoiceById(vid : number):Observable<Invoice>
+  public getInvoiceById(invoiceid : number):Observable<Invoice>
   {
-    return this.http.get<Invoice>(`${this.app_url}${vid}`);
+    return this.http.get<Invoice>(`${this.app_url}${invoiceid}`);
   }
 
-  public getInvoiceProductsByOrderId(vid : number):Observable<Invoice[]>
+  public getInvoiceProductsByOrderId(orderid : number):Observable<Invoice[]>
   {
-    return this.http.get<Invoice[]>(`${this.app_url}order/${vid}`);
+    return this.http.get<Invoice[]>(`${this.app_url}order/${orderid}`);
   }
 
   public updateInvoiceById(invoice : Invoice):Observable<Invoice>

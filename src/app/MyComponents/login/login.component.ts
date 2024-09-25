@@ -32,7 +32,7 @@ export class LoginComponent {
         }
     }
 
-Login(){
+Login() {
  this.loginserv.login(this.login.username,this.login.password).subscribe({
     next : (data)=> {
         this.router.navigate(['home'])

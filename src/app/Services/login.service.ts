@@ -10,9 +10,7 @@ import { Login } from '../Models/Login';
 })
 export class LoginService {
 
-  constructor(private http : HttpClient,
-              private basicauthserv : BasicAuthServiceService,
-              private jwtauth: JwtAuthServiceService) { }
+  constructor( private jwtauth: JwtAuthServiceService ) { }
 
   public login(username:string , pass : string)
   {

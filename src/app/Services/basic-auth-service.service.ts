@@ -11,7 +11,7 @@ export class BasicAuthServiceService {
 
   constructor(private http: HttpClient) { }
   app_url = GlobalComponents.base_url;
-  base_url= this.app_url;
+ // base_url= this.app_url;
   
   executeAuthenticationService(username:any, password:any) {
   
@@ -22,7 +22,7 @@ export class BasicAuthServiceService {
       })
      
      sessionStorage.setItem('token',basicAuthHeaderString)
-     return this.http.get<AuthenticationBean>(`${this.base_url}basicauth`,{ headers : headers }).pipe(
+     return this.http.get<AuthenticationBean>(`${this.app_url}basicauth`,{ headers : headers }).pipe(
                     map(
                       data=>{
                               sessionStorage.setItem('token',basicAuthHeaderString);
