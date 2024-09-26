@@ -17,18 +17,16 @@
           <tbody>
             <tr>
               <td style="padding-left:10px;width:50%">
-                <strong>{{customer.cust_first_name}}{{customer.cust_last_name}}</strong><br />
-                
+                <strong>{{customer.cust_first_name}}  {{customer.cust_last_name}}</strong><br />
                 {{customer.cust_address}} <br>
                 {{customer.city_name}} <br>
                 {{customer.state_name}}
-                
                </td>
               <td style="width:50%;padding:0">
               <table style="width:100%;height:100%">
                 <tr style="border-bottom:1px solid #999;">
                 <td style="padding:5px;padding-left:10px;width:50%"><b>Invoice No :</b>
-                 {{invoice.invoice_no}}</td>
+                  {{ invoice.prefix }}-{{invoice.invoice_no}}</td>
                 <td style="padding:5px;padding-left:10px;border-left:1px solid #999;"><b>Date :</b>
                 {{invoice.date_added}}</td>			
                 </tr>
@@ -95,7 +93,8 @@
                     <td  style="font-size:12px;padding:5px;text-align:right"> {{prod.cgst_per}}%</td>
                     <td  style="font-size:12px;padding:5px;text-align:right"> {{prod.sgst_per}}%</td>
                     <td  style="font-size:12px;padding:5px;text-align:right"> {{prod.igst_per}}%</td>
-                    <td  style="font-size:12px;padding:5px;text-align:right">{{prod.subtotal}}</td>
+                    <td  style="font-size:12px;padding:5px;text-align:right">{{ formatNumber(prod.subtotal)}}</td>
+                    <!-- <td  style="font-size:12px;padding:5px;text-align:right">{{ prod.subtotal}}</td> -->
                  </tr>
                  <tr style="border-top:1px solid #999;border-bottom:1px solid #999">
                   <td colspan="2" style="font-size:12px;padding:5px;text-align:right"><b>Total Qty:</b></td><td style="font-size:12px;padding:5px;text-align:right">

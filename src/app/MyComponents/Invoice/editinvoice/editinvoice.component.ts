@@ -1,3 +1,4 @@
+import { DecimalPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,7 +14,8 @@ import { TempinvoiceService } from 'src/app/Services/tempinvoice.service';
 @Component({
   selector: 'app-editinvoice',
   templateUrl: './editinvoice.component.html',
-  styleUrls: ['./editinvoice.component.css']
+  styleUrls: ['./editinvoice.component.css'],
+  providers : [DecimalPipe]
 })
 export class EditinvoiceComponent implements OnInit {
 
@@ -94,6 +96,9 @@ export class EditinvoiceComponent implements OnInit {
     // })
   }
 
+  formatNumber(number :any ){
+    return Math.round( number * 100 + Number.EPSILON ) / 100
+  }
 
   updateInvoice()
   {

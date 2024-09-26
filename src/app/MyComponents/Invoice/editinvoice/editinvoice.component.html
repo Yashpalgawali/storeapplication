@@ -106,17 +106,17 @@
                 <td>{{i+1}}</td>
                 <td>{{ tempinv.product.prod_name}}</td>
                 <td>{{ tempinv.product.prod_hsn}}</td>
-                <td>{{ tempinv.unit_price}}</td>
+                <td>{{ tempinv.price}}</td>
                 <td>{{ tempinv.qty}}</td>
                 <ng-container *ngIf="tempinv.igst==0">
-                    <td>{{tempinv.cgst}}({{tempinv.cgst_per}}%)</td>
-                    <td>{{tempinv.sgst}}({{tempinv.cgst_per}}%)</td>
+                    <td>{{formatNumber(tempinv.cgst)}}({{tempinv.cgst_per}}%)</td>
+                    <td>{{formatNumber(tempinv.sgst)}}({{tempinv.cgst_per}}%)</td>
                     <td>0(0.0%)</td>
                 </ng-container>
                 <ng-container *ngIf="tempinv.igst!=0">
                     <td>0(0.0%)</td>
                     <td>0(0.0%)</td>
-                    <td>{{tempinv.sgst}}({{tempinv.cgst_per}}%)</td>
+                    <td>{{formatNumber(tempinv.sgst)}}({{tempinv.cgst_per}}%)</td>
                 </ng-container>
                 <td>{{tempinv.total}}</td>
                 <td><button (click)="deleteTempInvoiceProductbyId(tempinv.inv_prod_id )" style="color: red;"> X</button></td>
