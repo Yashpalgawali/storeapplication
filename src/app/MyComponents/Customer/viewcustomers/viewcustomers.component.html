@@ -1,6 +1,6 @@
 <div class="container">
        <!-- start: PAGE HEADER -->
-       <div class="row">
+    <div class="row">
         <div class="col-sm-12">
             
             <!-- start: PAGE TITLE & BREADCRUMB -->
@@ -11,12 +11,14 @@
              </li>
                 <li class="breadcrumb-item active" aria-current="page">View Customers</li>
             </ol>
-            <a routerLink="/addcustomer" class="btn btn-primary" style="float:right;">Add Customer</a> 
+             <h4> View Customers
+                <a routerLink="/addcustomer" class="btn btn-primary" style="float:right;">Add Customer</a> 
+             </h4>
         </div>
     </div>
     <div *ngIf="response"><h6 class="alert alert-success">{{response}}</h6></div>
     <div *ngIf="reserr"><h6 class="alert alert-danger">{{reserr}}</h6></div>
-    <table class="table table-hover table-striped">
+    <table class="table table-hover table-striped mt-3">
         <thead>
             <tr>
                 <th>Sr no</th>

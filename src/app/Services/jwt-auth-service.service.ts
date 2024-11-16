@@ -69,7 +69,7 @@ export class JwtAuthServiceService {
 
   logout() {
     
-    this.http.post(`${this.app_url}logout`,  {  withCredentials: true })
+    this.http.post(`${this.app_url}logouturl`,  {  withCredentials: true })
     .subscribe({
         complete: () => {
           sessionStorage.removeItem('authenticatedUser')
@@ -85,11 +85,11 @@ export class JwtAuthServiceService {
         }
     });
     
-    sessionStorage.removeItem('authenticatedUser')
-    sessionStorage.removeItem('token')
-    localStorage.removeItem('authenticatedUser')
-    localStorage.removeItem('token')
-    sessionStorage.removeItem('temp_invoice_id')
-    sessionStorage.removeItem('po_temp_id')    
+    // sessionStorage.removeItem('authenticatedUser')
+    // sessionStorage.removeItem('token')
+    // localStorage.removeItem('authenticatedUser')
+    // localStorage.removeItem('token')
+    // sessionStorage.removeItem('temp_invoice_id')
+    // sessionStorage.removeItem('po_temp_id')    
   }
 }

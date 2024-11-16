@@ -23,8 +23,8 @@ export class ViewvendorComponent {
             {
                this.response =sessionStorage.getItem('response')
                setTimeout(() => {
-                   sessionStorage.removeItem('response')
-                   this.response=""
+                this.response=""   
+                sessionStorage.removeItem('response')
                }, 5000);
             }
 
@@ -32,8 +32,8 @@ export class ViewvendorComponent {
               {
                  this.response =sessionStorage.getItem('reserr')
                  setTimeout(() => {
-                     sessionStorage.removeItem('reserr')
-                     this.reserr=""
+                  this.reserr=""   
+                  sessionStorage.removeItem('reserr')
                  }, 5000);
               }
         },

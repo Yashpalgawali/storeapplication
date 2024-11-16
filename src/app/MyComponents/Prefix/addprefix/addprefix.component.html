@@ -8,12 +8,14 @@
             <li class="breadcrumb-item" >
                 <a routerLink="/"> <i class="fa fa-home"></i>&nbsp;Home </a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">Edit Invoice</li>
+            <li class="breadcrumb-item active" aria-current="page">Edit Prefix</li>
         </ol>
     </div>
 </div>
+<div *ngIf="response"><h6 class="alert alert-success"> {{response}}</h6></div>
+<div *ngIf="reserr"><h6 class="alert alert-danger"> {{reserr}}</h6></div>
 <div class="card">
-    <div class="card-header"> <h4>Edit Invoice</h4> </div>
+    <div class="card-header"> <h4>Edit Prefix</h4> </div>
     <div class="card-body">
     <form (ngSubmit)="addPrefix()"  method="post">
         <div class="form-group">
@@ -24,6 +26,7 @@
             <label for="prefix">Financial Prefix</label>
                 <input type="text" name="prefix" id="prefix" [(ngModel)]="prefix.prefix" class="form-control mb-3">
         </div>
+        <button class="btn btn-primary">Update</button>
     </form>
 
 </div></div></div>

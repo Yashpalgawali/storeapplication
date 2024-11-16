@@ -17,7 +17,7 @@ export class ViewproductComponent {
   response : any
   reserr   : any
  // dtOptions: DataTables.Settings = {};
-  dtTrigger : Subject<any> = new Subject<any>
+  // dtTrigger : Subject<any> = new Subject<any>
   ngOnInit(): void {
     
     this.prodserv.getAllProducts().subscribe({
@@ -27,18 +27,16 @@ export class ViewproductComponent {
             {
               this.response = sessionStorage.getItem('response')
               setTimeout(() => {
-                
-                sessionStorage.removeItem('response')
                 this.response=""
+                sessionStorage.removeItem('response')
               }, 3000);
             }
             if(sessionStorage.getItem('reserr')!=null)
             {
               this.reserr = sessionStorage.getItem('reserr')
               setTimeout(() => {
-              
-                sessionStorage.removeItem('reserr')
                 this.reserr=""
+                sessionStorage.removeItem('reserr')
               }, 3000);
             }
         },

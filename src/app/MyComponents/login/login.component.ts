@@ -17,18 +17,16 @@ export class LoginComponent {
   login     : Login = new Login()
   constructor(private jwtauthserv  : JwtAuthServiceService,
               private loginserv : LoginService,
-              private router    : Router) {
-                
-              }
+              private router    : Router) {  }
 
     ngOnInit(): void {
       this.response= sessionStorage.getItem('response')
       if(sessionStorage.getItem('response')!=null)
         {
           setTimeout(() => {
-            this.response=""
             sessionStorage.removeItem('response')
-          }, 5000);
+            this.response=""
+          }, 3000);
         }
     }
 

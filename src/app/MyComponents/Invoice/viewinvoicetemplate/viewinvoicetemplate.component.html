@@ -75,9 +75,10 @@
                 <td class="text-right"><b>HSN</b></td>	
                 <td class="text-right"><b>Unit</b></td>		  
                 <td class="text-right"><b>Price</b></td>		 
-                <td class="text-right"><b>CGST</b></td>			
-                <td class="text-right"><b>SGST</b></td>			
-                <td class="text-right"><b>IGST</b></td>			
+                
+                <td *ngIf="cgst!=0" class="text-right"><b>CGST</b></td>			
+                <td *ngIf="cgst!=0" class="text-right"><b>SGST</b></td>			
+                <td *ngIf="igst!=0" class="text-right"><b>IGST</b></td>			
                 <td class="text-right"><b>Amount</b></td>
                  
               </tr>
@@ -103,18 +104,18 @@
                    
                   <!--Calculate and Display CGST -->
                   
-                  <tr><td colspan='9' style="font-size:12px;padding:5px;text-align:right"><b>CGST  {{cgst_per}} %</b></td>
+                  <tr *ngIf="cgst!=0"><td colspan='9' style="font-size:12px;padding:5px;text-align:right"><b>CGST  {{cgst_per}} %</b></td>
                     <td style="font-size:12px;padding:5px;text-align:right"><b>{{tot_cgst}}</b></td>
                   </tr>
                    <!--Calculate and Display SGST -->
                   
-                   <tr><td colspan='9' style="font-size:12px;padding:5px;text-align:right"><b>SGST  {{sgst_per}} %</b></td>
+                   <tr *ngIf="cgst!=0"><td colspan='9' style="font-size:12px;padding:5px;text-align:right"><b>SGST  {{sgst_per}} %</b></td>
                     <td style="font-size:12px;padding:5px;text-align:right"><b>{{tot_sgst}}</b></td>
                   </tr>
                    <!------------------------------------------------------------------------------->
                     <!--Calculate and Display SGST -->
                   
-                    <tr><td colspan='9' style="font-size:12px;padding:5px;text-align:right"><b>IGST  {{igst_per}} %</b></td>
+                    <tr *ngIf="igst!=0"><td colspan='9' style="font-size:12px;padding:5px;text-align:right"><b>IGST  {{igst_per}} %</b></td>
                       <td style="font-size:12px;padding:5px;text-align:right"><b>{{tot_igst}}</b></td>
                     </tr>
                      <!------------------------------------------------------------------------------->

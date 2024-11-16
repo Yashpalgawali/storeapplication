@@ -23,7 +23,7 @@ export class ViewdocketComponent implements OnInit {
       if(sessionStorage.getItem('response')!=null) {
         this.response = sessionStorage.getItem('response')
         setTimeout(() => {
-          this.response=''
+          this.response=""
           sessionStorage.removeItem('response')
         }, 3000);
       }
@@ -31,7 +31,7 @@ export class ViewdocketComponent implements OnInit {
       if(sessionStorage.getItem('reserr')!=null) {
         this.reserr = sessionStorage.getItem('reserr')
         setTimeout(() => {
-          this.reserr=''
+          this.reserr=""
           sessionStorage.removeItem('reserr')
         }, 3000);
       }

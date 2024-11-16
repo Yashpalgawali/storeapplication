@@ -25,16 +25,17 @@ export class ViewcustomersComponent {
               {
                 this.response = sessionStorage.getItem('response')
                 setTimeout(() => {
-                  sessionStorage.removeItem('response')
                   this.response=""
+                  sessionStorage.removeItem('response')
+                  
                 }, 3000);
               }
               if(sessionStorage.getItem('reserr')!=null)
               {
                 this.reserr = sessionStorage.getItem('reserr')
                 setTimeout(() => {
-                  sessionStorage.removeItem('reserr')
                   this.reserr=""
+                  sessionStorage.removeItem('reserr')
                 }, 3000);
               }
           },

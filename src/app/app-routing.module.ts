@@ -72,7 +72,7 @@ const routes: Routes = [
 
     {path : "login" , component : LoginComponent },
     {path : "" , component : LoginComponent },
-    {path : "logout" , component : LogoutComponent ,canActivate : [RouteGuardService]},
+    {path : "logouturl" , component : LogoutComponent ,canActivate : [RouteGuardService]},
     {path : "home" , pathMatch : 'full', component : HomeComponent ,canActivate : [RouteGuardService]}
     
   ];
