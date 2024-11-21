@@ -72,7 +72,7 @@
                     <td>{{prod.sgst}} ({{prod.sgst_per}}%)</td>
                     <td>{{prod.igst}} ({{prod.igst_per}}%)</td>
                     <td>{{prod.total}} </td>
-                    
+                    <td><button type="button" (click)="removeitem(prod.purchase_prod_order_id)" class="btn" style="color: red;"><span>X</span> </button> </td>
             </tr>
        </tbody>
      </table>

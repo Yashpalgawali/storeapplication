@@ -10,7 +10,8 @@ import { Observable } from 'rxjs';
 export class PurchaseorderproductsService {
 
   base_url = GlobalComponents.base_url;
-  app_url = this.base_url+"purchaseorderproduct/"
+   app_url = this.base_url+"purchaseorderproduct/"
+  //app_url = this.base_url+"example_temp_prod/"
   constructor(private http : HttpClient) { }
 
   public savePurchaseOrderProducts(poprod : PurchaseOrderProducts):Observable<PurchaseOrderProducts>

@@ -32,11 +32,13 @@ export class AddpurchaseorderComponent implements OnInit {
     this.vendserv.getAllVendors().subscribe({
       next:(data)=> {
           this.vendlist = data
+          alert(JSON.stringify(this.vendlist))
       },
     }) 
     this.poprodserv.getAllPoProducts().subscribe({
       next :(data) =>{
           this.prodlist = data
+          alert(JSON.stringify(this.prodlist))
       },
     })
 
@@ -85,5 +87,9 @@ export class AddpurchaseorderComponent implements OnInit {
       },
     })
      
+  }
+
+  removeitem(prod_id :number) {
+    alert(prod_id)
   }
 }

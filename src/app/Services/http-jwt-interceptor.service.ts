@@ -12,6 +12,7 @@ export class HttpJwtInterceptorService implements HttpInterceptor{
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     let rawToken = this.jwtauth.getAuthenticatedToken()
+
     if(rawToken!=null)
     {
       let jwttoken = 'Bearer '+this.jwtauth.getAuthenticatedToken()
