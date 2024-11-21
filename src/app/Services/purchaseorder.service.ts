@@ -14,7 +14,7 @@ export class PurchaseorderService {
   constructor(private http : HttpClient) { }
 
   public savePurchaseOrder( porder : any):Observable<PurchaseOrder> {
-    alert("inside save PO() \n"+ JSON.stringify(porder))
+    
     return this.http.post<PurchaseOrder>(`${this.app_url}`,porder)
   }
 
@@ -30,4 +30,5 @@ export class PurchaseorderService {
     return this.http.put<PurchaseOrder>(`${this.app_url}`,porder)
   }
 
+ 
 }

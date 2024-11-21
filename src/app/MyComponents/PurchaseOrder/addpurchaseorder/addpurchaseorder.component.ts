@@ -90,6 +90,14 @@ export class AddpurchaseorderComponent implements OnInit {
   }
 
   removeitem(prod_id :number) {
-    alert(prod_id)
+    alert('Prod ID '+prod_id)
+    this.purchaseordprodserv.removePOProductById(prod_id).subscribe({
+      next:(data)=> {
+          alert(JSON.stringify(data))
+      },
+      error: (err) => {
+          alert(JSON.stringify(err))
+      },
+    })
   }
 }

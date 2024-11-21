@@ -23,4 +23,8 @@ export class PurchaseorderproductsService {
   {
    return  this.http.get<PurchaseOrderProducts[]>(`${this.app_url}${tempid}`);
   }
+
+  public removePOProductById(prodid : number):Observable<String> {
+    return this.http.delete<String>(`${this.app_url}remove/product/${prodid}`)
+  }
 }
