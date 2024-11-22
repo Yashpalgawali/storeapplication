@@ -15,6 +15,7 @@ export class PurchaseOrderProducts {
 	  igst !: number
 	  unit_price !: number	
       total !: number
+	  subtotal !: number
 	  product : PoProductsList = new PoProductsList()
 
 	  po_id : PurchaseOrder =new PurchaseOrder()

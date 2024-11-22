@@ -16,11 +16,14 @@ export class ViewpurchaseorderComponent implements OnInit {
   constructor(private pordserv : PurchaseorderService,private router : Router ) {}
   
   ngOnInit(): void {
-    this.pordserv.getAllPurchaseOrders().subscribe({
-      next:(data) => {
-        this.polist = data
-      }
-    })
+      this.pordserv.getAllPurchaseOrders().subscribe({
+        next:(data) => {
+          this.polist = data
+        }
+      })
     }
 
-}
+    getPurchaseOrder(poid :number){
+      this.router.navigate(['view/purchaseorder/',poid])
+    }
+  }

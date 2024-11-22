@@ -1,1 +1,153 @@
-<p>printpurchaseorder works!</p>
+<body >  
+    <div class="container" style="background-color:#fff;padding:0px">
+    <div style="border:2px solid #000;padding:0px">
+      <div style="page-break-after: always;">
+      <div class="col-sm-12 col-xs-12" style="text-align:center">
+        <h3 style="margin-top:8px;">Tidy Casa Private Limited.</h3>
+        <p>Anjali complex, Khadkeshwar,Aurangabad 431001 Maharashtra <br>Contact: 0240-2244241,Tollfree No: 1800-233-1881</p>
+      </div> 
+      <!--<div class="col-sm-4 col-xs-4" >
+        <img style="float:right; margin-top:8px;" src="<?php echo base_url(); ?>assets/images/tidylogo2.jpg" height="auto" width="250" />
+      </div>-->
+       
+        <table class="table table-bpoed">
+          <thead>
+            <tr>
+              <td colspan="2" align="center"><b>PURCHASE ORDER</b></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="width: 60%;">
+              
+                <strong>PO No. </strong>{{purchase_order.po_id}}<br />
+                <strong>PO Date. </strong>{{purchase_order.po_date}}<br />
+                <strong>Ship To,</strong><br />
+                <p>Tidy casa Private Limited<br>
+                F-2, MIDC Area, Waluj, Aurangabad - 431136 (M.S.) India.
+                <br>Contact: 0240-2244241,Tollfree No: 1800-233-1881</p>
+             
+                            
+               </td>
+              <td style="width:40%;padding-right:10px;">
+              <strong>To,</strong><br />
+                <p>{{purchase_order.vendor.vendor_name}}<br>{{purchase_order.vendor.vendor_address}},{{purchase_order.vendor.city_name}}<br>{{purchase_order.vendor.state_name}}- {{purchase_order.vendor.pincode}}</p>
+                <p><b>GST NO</b> : {{purchase_order.vendor.vendor_gst}}</p>
+              </td>
+                 
+                  </tr> 
+          </tbody>
+        </table>
+       
+        <table class="table table-bpoed nobpo" style="margin-bottom:0px;border-collapse: collapse;">
+          <thead>
+           
+            <tr>
+              <td class="text-left" style="border:1px solid #999"><b>Sr No</b></td> 
+              <td style="border:1px solid #999" ><b>Description</b></td>		  
+              <td class="text-right" style="border:1px solid #999"><b>Item Code</b></td> 
+              <td class="text-right" style="border:1px solid #999"><b>Quantity</b></td>
+              <td class="text-right" style="border:1px solid #999"><b>Unit</b></td>
+              <td class="text-right" style="border:1px solid #999"><b>Price</b></td>
+              <td class="text-right" style="border:1px solid #999"><b>HSN</b></td>
+              <td class="text-right" style="border:1px solid #999"><b>CGST</b></td>
+              <td class="text-right" style="border:1px solid #999"><b>SGST</b></td>
+              <td class="text-right" style="border:1px solid #999"><b>IGST</b></td>          
+              <td class="text-right" style="border:1px solid #999"><b>Amount</b></td>
+            </tr>
+          </thead>
+          <tbody>
+             
+            <tr *ngFor="let item of poprodlist; let i=index">
+              <td  style="font-size:12px;padding:5px;text-align:left;padding:10px;border:1px solid #999;">{{i+1}}</td>
+              <td  style="font-size:12px;padding:5px;text-align:left;border:1px solid #999">{{poprodlist.product}}</td>
+              <td  style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{poprodlist}}</td>
+              <td  style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{poprodlist.qty}}</td>
+              <td style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{poprodlist}}</td>
+              <td style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{poprodlist.unit_price}}</td>
+              <td style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{poprodlist}}</td>
+              <td  style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{poprodlist.cgst_per}} %</td>
+              <td  style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{poprodlist.sgst_per}} %</td>
+              <td  style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{poprodlist.igst_per}} %</td>
+              <td  style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{poprodlist.sub_total}}</td>
+            </tr>
+            
+            <tr style="top:1px solid #999">
+                <td colspan="3" style="font-size:12px;padding:5px;text-align:right;border:1px solid #999"><b>Total Qty:</b></td><td style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">
+                <b>{{total_qty}}</b></td><td colspan='6' style="font-size:12px;padding:5px;text-align:right;border:1px solid #999"><b>Total Assessable Value</b></td>
+                <td style="font-size:12px;padding:5px;text-align:right;border:1px solid #999"><b>{{subtotal}}</b></td>
+            </tr>
+             
+             <!---------------------------------CGST----------------------------------->
+         
+             <tr *ngIf="cgst_per>0"><td colspan='10' style="font-size:12px;padding:5px;text-align:right;border:1px solid #999"><b>CGST {{cgst_per}}%</b></td>
+            <td style="font-size:12px;padding:5px;text-align:right;border:1px solid #999"><b>{{tot_cgst}}</b></td></tr>
+             
+              <!------------------------------------------------------------------------------->
+             <!---------------------------------SGST----------------------------------->
+         
+             <tr *ngIf="sgst_per>0"><td colspan='10' style="font-size:12px;padding:5px;text-align:right;border:1px solid #999"><b>SGST {{sgst_per}}%</b></td>
+            <td style="font-size:12px;padding:5px;text-align:right;border:1px solid #999"><b>{{tot_sgst}}</b></td></tr>
+             
+             
+             <!------------------------------------------------------------------------------->
+             <!---------------------------------IGST----------------------------------->
+           
+             <tr *ngIf="igst_per>0"><td colspan='10' style="font-size:12px;padding:5px;text-align:right;border:1px solid #999"><b>IGST {{igst_per}} %</b></td>
+            <td style="font-size:12px;padding:5px;text-align:right;border:1px solid #999"><b> {{tot_igst}}</b></td></tr>
+             
+            
+             <!------------------------------------------------------------------------------->
+            <tr><td colspan='10' style="font-size:12px;padding:5px;text-align:right;border:1px solid #999"><b>Packing Charges</b></td>
+            <td style="font-size:12px;padding:5px;text-align:right;border:1px solid #999"><b>{{packing_charge}}</b></td>
+            </tr>
+            <tr><td colspan='10' style="font-size:12px;padding:5px;text-align:right;border:1px solid #999"><b>Transport Charges</b></td>
+            <td style="font-size:12px;padding:5px;text-align:right;border:1px solid #999"><b>{{transport_charge}} </b></td>
+            </tr>		
+             <tr><td colspan='10' style="font-size:12px;padding:5px;text-align:right;border:1px solid #999"><b>Grand Total</b></td>
+            <td style="font-size:12px;padding:5px;text-align:right;border:1px solid #999"><b>{{final_total}}</b></td>
+            </tr>		
+          </tbody>
+        </table>
+        <!--table class="table table-bpoed nobpo" style="margin-bottom:0px">
+          <tbody>
+            <tr>
+              <td colspan="2" style="width:75%;padding:5px">
+                <b>prepared By :</b> <?php echo $po['preparedby']; ?>
+                <br>
+                <br></br>
+                <b>Date : <?php echo $po['po_date']; ?> </b>
+              </td>
+               <td style="padding:5px;text-align:center">
+               <b>For TidyCasa Pvt. Ltd.</b>
+              <p><br/><br/></p>
+               <b>Authorized Signature</b>
+               </td>
+            </tr>
+            
+          </tbody>
+        </table --><table class="table table-bordered">      <tbody>	  <tr>	    <td>	<b>Prepared by :</b> {{purchase_order.prepared_by}}</td>        <td style="text-align:center"><b>Date : {{purchase_order.po_date}} </b></td>			  </tr>        <tr>          <td  style="width:75%;font-size:12px;padding:5px">			<b>DECLARATION: </b>			<p> We declare that this purchase order shows the actual price of the goods described and that all particulars are true and correct.</p>			<!--<b>CUSTOMER ACKNOWLEDGEMENT: </b>			<P>I <b>Trendsutra Platform  Services Private Limited</b> hereby confirm that the above said product/s are being puechased for my internal/personal consumption and not for re-sale.</P>-->		  </td>	
+        <td style="padding:5px;text-align:center">		   <b>For Tidy Casa Pvt. Ltd.</b>		  <p><br><br><br></p>		   <b>Authorized Signatory</b>		   </td></tr>
+    
+        <tr><td style="font-size:12px;padding:5px"><b>GST NO.</b></td> 
+        <td style="font-size:12px;padding:5px"><b>PAN NO.</b></td>        </tr>
+      
+        <tr>                
+        <td style="font-size:12px;padding:5px">27AAFCT4759B1ZA</td>            <td style="font-size:12px;padding:5px">AAFCT4759B</td>        </tr><tr>              </tr></tbody>    </table>
+        
+      </div>
+    </div>
+      
+    </div>
+    <div align="center">
+    <button type="buttton" onclick="window.print()" name="print" class="print btn btn-success btn-md">Print</button>
+    </div>
+    </body>
+    <style>
+    @media print {
+      .print{
+        display:none;
+      }
+      
+    }
+    </style>
