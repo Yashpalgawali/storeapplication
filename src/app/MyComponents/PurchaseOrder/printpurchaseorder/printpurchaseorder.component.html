@@ -58,18 +58,19 @@
           </thead>
           <tbody>
              
-            <tr *ngFor="let item of poprodlist; let i=index">
+            <tr *ngFor="let prod of poprodlist; let i=index">
               <td  style="font-size:12px;padding:5px;text-align:left;padding:10px;border:1px solid #999;">{{i+1}}</td>
-              <td  style="font-size:12px;padding:5px;text-align:left;border:1px solid #999">{{poprodlist.product}}</td>
-              <td  style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{poprodlist}}</td>
-              <td  style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{poprodlist.qty}}</td>
-              <td style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{poprodlist}}</td>
-              <td style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{poprodlist.unit_price}}</td>
-              <td style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{poprodlist}}</td>
-              <td  style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{poprodlist.cgst_per}} %</td>
-              <td  style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{poprodlist.sgst_per}} %</td>
-              <td  style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{poprodlist.igst_per}} %</td>
-              <td  style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{poprodlist.sub_total}}</td>
+              <td  style="font-size:12px;padding:5px;text-align:left;border:1px solid #999">{{prod.product.prod_name}}</td>
+              <td  style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{prod.product.prod_model}}</td>
+              <td  style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{prod.qty}}</td>
+              <td style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{prod.product.prod_unit}}</td>
+              <td style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{prod.unit_price}}</td>
+              <td style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{prod.product.prod_hsn}}</td>
+              <td  style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{prod.cgst_per}} %</td>
+              <td  style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{prod.sgst_per}} %</td>
+              <td  style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{prod.igst_per}} %</td>
+              <td  style="font-size:12px;padding:5px;text-align:right;border:1px solid #999">{{prod.unit_price * prod.qty}}</td>
+           
             </tr>
             
             <tr style="top:1px solid #999">
@@ -99,13 +100,13 @@
             
              <!------------------------------------------------------------------------------->
             <tr><td colspan='10' style="font-size:12px;padding:5px;text-align:right;border:1px solid #999"><b>Packing Charges</b></td>
-            <td style="font-size:12px;padding:5px;text-align:right;border:1px solid #999"><b>{{packing_charge}}</b></td>
+            <td style="font-size:12px;padding:5px;text-align:right;border:1px solid #999"><b>{{purchase_order.packing_charge}}</b></td>
             </tr>
             <tr><td colspan='10' style="font-size:12px;padding:5px;text-align:right;border:1px solid #999"><b>Transport Charges</b></td>
-            <td style="font-size:12px;padding:5px;text-align:right;border:1px solid #999"><b>{{transport_charge}} </b></td>
+            <td style="font-size:12px;padding:5px;text-align:right;border:1px solid #999"><b>{{purchase_order.transport_charge}} </b></td>
             </tr>		
              <tr><td colspan='10' style="font-size:12px;padding:5px;text-align:right;border:1px solid #999"><b>Grand Total</b></td>
-            <td style="font-size:12px;padding:5px;text-align:right;border:1px solid #999"><b>{{final_total}}</b></td>
+            <td style="font-size:12px;padding:5px;text-align:right;border:1px solid #999"><b>{{final_total + purchase_order.transport_charge +purchase_order.packing_charge}}</b></td>
             </tr>		
           </tbody>
         </table>

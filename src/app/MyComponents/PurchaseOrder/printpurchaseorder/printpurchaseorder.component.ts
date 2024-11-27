@@ -54,26 +54,24 @@ export class PrintpurchaseorderComponent implements OnInit{
       next: (data) => {
         this.poprodlist = data
 
+       // alert(JSON.stringify(data))
         for(let i=0;i<this.poprodlist.length;i++)
-          { 
-            this.qt =   +JSON.stringify(this.poprodlist[i].qty)
-            this.sbt =  +JSON.stringify(this.poprodlist[i].subtotal)
-            this.cgst = +JSON.stringify(this.poprodlist[i].cgst)
-            this.sgst = this.cgst 
-            this.igst = +JSON.stringify(this.poprodlist[i].igst)
-            this.transport_charge = +JSON.stringify(this.poprodlist[i].transport_charge)
-            this.packing_charge  = +JSON.stringify(this.poprodlist[i].packing_charge)
-            this.subtotal = this.subtotal+ this.sbt
+          {  
+             this.qt =   (this.poprodlist[i].qty)
+            // this.sbt =  (this.poprodlist[i].subtotal)
+             this.cgst = (this.poprodlist[i].cgst)
+             this.sgst = this.cgst 
+             this.igst = (this.poprodlist[i].igst)
+            
+             this.subtotal =  this.subtotal + (this.poprodlist[i].unit_price *this.poprodlist[i].qty)
             this.subtotal = Math.round( this.subtotal * 100 + Number.EPSILON ) / 100
             if(this.cgst!=0)
             {
-              this.cgst_per = +JSON.stringify(this.poprodlist[i].cgst_per)
-              //this.sgst_per = +JSON.stringify(this.poprodlist[i].cgst_per)
+              this.cgst_per = (this.poprodlist[i].cgst_per)
               this.sgst_per = this.cgst_per
               this.igst_per = 0
               this.tot_cgst = this.tot_cgst + this.cgst
              
-              //this.tot_cgst=Math.round(this.tot_cgst+ Number.EPSILON)
               this.tot_cgst= Math.round( this.tot_cgst * 100 + Number.EPSILON ) / 100
 
               this.tot_sgst = this.tot_cgst
@@ -88,9 +86,10 @@ export class PrintpurchaseorderComponent implements OnInit{
               this.tot_igst = this.tot_igst + this.igst
             }
             this.total_qty = this.total_qty + this.qt
-            this.final_total =  this.subtotal+this.tot_cgst+this.tot_sgst+this.tot_igst+this.transport_charge+this.packing_charge
+            this.final_total =  this.subtotal+this.tot_cgst+this.tot_sgst+this.tot_igst
             this.final_total =   Math.round( this.final_total * 100 + Number.EPSILON ) / 100
           }
+         // alert('subtotal '+this.subtotal)
       },
     })
   }
