@@ -44,10 +44,10 @@
                <td>SGST</td>
                <td>IGST</td>
                <td>Total</td>
-               <!-- <td>Action</td> -->
+               <td>Action</td>
            </tr>
        </thead>
-       
+        
        <tbody>
        <tr *ngFor="let prod of po_prod_list; let i=index">
             <td>{{i+1}}</td>
@@ -55,10 +55,11 @@
             <td>{{prod.product.prod_hsn}}</td>
             <td>{{prod.product.prod_price}}</td>
             <td>{{prod.qty}}</td>
-            <td>{{prod.cgst}}</td>
-            <td>{{prod.sgst}}</td>
-            <td>{{prod.igst}}</td>
-            <td>{{prod.Total}}</td>
+            <td>{{prod.cgst}}({{prod.cgst_per}}%) </td>
+            <td>{{prod.sgst}}({{prod.sgst_per}}%)</td>
+            <td>{{prod.igst}}({{prod.igst_per}}%)</td>
+            <td>{{prod.total}}</td>
+            <td><button class="btn" (click)="removePurchaseOrderProduct(prod.purchase_prod_order_id)"></button> </td>
        </tr>   
 
        </tbody>

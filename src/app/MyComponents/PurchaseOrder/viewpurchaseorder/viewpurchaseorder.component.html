@@ -17,13 +17,16 @@
             
             <tr *ngFor="let po of polist ; let i =index">
                 <td>{{i+1}}</td>
-                <td>{{po.prefix}}/{{po.po_no}}</td>
+                <td>{{po.prefix}}/{{po.po_id}}</td>
                 <td>{{po.po_date}}</td>
                 <td>Tidycasa</td>
                     <td>{{po.vendor.vendor_name}}</td>
                     <td>{{po.vendor.vendor_contact}}</td>
                     <td>{{po.total_amount}}</td>
-                    <td> <button class="btn btn-primary" (click)="getPurchaseOrder(po.po_id)" ><i class="fa fa-eye"></i> </button></td>
+                    <td>
+                        <button class="btn btn-primary" (click)="getPurchaseOrder(po.po_id)" ><i class="fa fa-eye"></i> </button>&nbsp;
+                        <button class="btn btn-success" (click)="editPurchaseOrder(po.po_id)" ><i class="fa fa-edit"></i> </button>
+                    </td>
             </tr>
         </tbody>
     </table>

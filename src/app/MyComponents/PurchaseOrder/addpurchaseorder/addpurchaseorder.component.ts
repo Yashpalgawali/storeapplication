@@ -30,25 +30,25 @@ export class AddpurchaseorderComponent implements OnInit {
 
   ngOnInit(): void { 
     this.vendserv.getAllVendors().subscribe({
-      next:(data)=> {
+      next:(data) => {
           this.vendlist = data
-          alert(JSON.stringify(this.vendlist))
       },
     }) 
     this.poprodserv.getAllPoProducts().subscribe({
-      next :(data) =>{
+      next :(data) => {
           this.prodlist = data
-          alert(JSON.stringify(this.prodlist))
       },
     })
 
     this.tempid = sessionStorage.getItem('po_temp_id')
-    
-    if(sessionStorage.getItem('po_temp_id')!=null)
+    alert("temp_po_id = "+this.tempid)
+    if(this.tempid != null)
     {
       this.purchaseordprodserv.getPurchaseOrderProductsByTempId(this.tempid).subscribe({
         next:(data)=> {
             this.po_prod_list = data
+            alert('Inside getPurchaseOrderProductsByTempId() '+this.tempid+' \n products are '+JSON.stringify(data))
+
         },
         error : (err)=>{
           alert("error")
@@ -62,6 +62,8 @@ export class AddpurchaseorderComponent implements OnInit {
     this.purchaseordprodserv.savePurchaseOrderProducts(this.po_product).subscribe({
         next:(data) => {
           this.po_product = data
+          alert('Inside save poproducts() '+ JSON.stringify(data) )
+
           sessionStorage.setItem('po_temp_id',''+this.po_product.temp_id)
           
           setTimeout(() => {

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { PurchaseOrder } from 'src/app/Models/PurchaseOrder';
 import { PurchaseOrderProducts } from 'src/app/Models/PurchaseOrderProducts';
 import { PoproductService } from 'src/app/Services/poproduct.service';
+import { PurchaseorderService } from 'src/app/Services/purchaseorder.service';
 import { PurchaseorderproductsService } from 'src/app/Services/purchaseorderproducts.service';
 import { VendorService } from 'src/app/Services/vendor.service';
 
@@ -16,7 +17,7 @@ export class EditpurchaseorderComponent {
 
   constructor(private router : Router , private poprodserv : PoproductService, 
     private purchaseordprodserv : PurchaseorderproductsService ,
-    private vendserv : VendorService,) {
+    private vendserv : VendorService,private purchaseorderserv : PurchaseorderService) {
      
      }
 
@@ -26,7 +27,7 @@ purchase_order : PurchaseOrder =new PurchaseOrder()
 po_product : PurchaseOrderProducts =new PurchaseOrderProducts()
 tempid :any
 vendlist :any
-
+poid :any
 ngOnInit(): void {
       this.vendserv.getAllVendors().subscribe({
       next:(data)=> {
@@ -40,6 +41,18 @@ ngOnInit(): void {
       },
     })
 
+    if(sessionStorage.getItem('poid')!=null)
+    {
+      this.poid = Number(sessionStorage.getItem('poid')!)
+      
+      this.purchaseorderserv.getePurchaseOrderById(this.poid).subscribe({
+        next:(data) => {
+          sessionStorage.setItem('po_temp_id',''+data.order_id)
+        },
+      })
+    }
+
+
     this.tempid = sessionStorage.getItem('po_temp_id')
 
     if(sessionStorage.getItem('po_temp_id')!=null)
@@ -47,6 +60,7 @@ ngOnInit(): void {
       this.purchaseordprodserv.getPurchaseOrderProductsByTempId(this.tempid).subscribe({
       next:(data)=> {
         this.po_prod_list =data  
+        alert(JSON.stringify(data))
       },
       error : (err)=>{
         alert("error")
@@ -59,9 +73,19 @@ ngOnInit(): void {
 
   }
 
-
-
   updatePOProducts(purchase_prod : NgForm) {
 
+  }
+
+  removePurchaseOrderProduct(prodid : number)
+  {
+    this.purchaseordprodserv.removePOProductById(prodid).subscribe({
+      next : (data) => {
+          alert(data)
+      },
+      error : (err) => {
+          alert("Product is not removed")
+      },
+    })
   }
 }

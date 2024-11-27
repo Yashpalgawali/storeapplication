@@ -78,6 +78,8 @@ export class JwtAuthServiceService {
           localStorage.removeItem('token')
           sessionStorage.removeItem('temp_invoice_id')
           sessionStorage.removeItem('po_temp_id')         
+          sessionStorage.removeItem('poid')         
+          
           alert('Logged OUT')
         },
         error: (err) => {

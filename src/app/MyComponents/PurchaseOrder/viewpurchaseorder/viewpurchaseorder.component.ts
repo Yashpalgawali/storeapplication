@@ -23,7 +23,12 @@ export class ViewpurchaseorderComponent implements OnInit {
       })
     }
 
-    getPurchaseOrder(poid :number){
+    getPurchaseOrder(poid :number) {
       this.router.navigate(['view/purchaseorder/',poid])
+    }
+
+    editPurchaseOrder(poid : number ) {
+      sessionStorage.setItem('poid',''+poid)
+      this.router.navigate(['edit/purchaseorder/',poid])
     }
   }
