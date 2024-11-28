@@ -43,7 +43,7 @@ export class AddinvoiceComponent implements OnInit{
     });
     let tempid = JSON.parse(sessionStorage.getItem('temp_invoice_id') || '{}' );
     // let tempid = JSON.parse(sessionStorage.getItem('temp_invoice_id')! );
-    alert('temp invoice id '+JSON.stringify(tempid))
+   
     if(sessionStorage.getItem('temp_invoice_id')!=null)
     {
       this.teinvserv.getTempInvoicesbyTempInvoiceId(tempid).subscribe({

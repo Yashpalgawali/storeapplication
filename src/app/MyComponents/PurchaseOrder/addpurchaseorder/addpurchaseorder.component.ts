@@ -61,10 +61,10 @@ export class AddpurchaseorderComponent implements OnInit {
   {
     this.purchaseordprodserv.savePurchaseOrderProducts(this.po_product).subscribe({
         next:(data) => {
-          this.po_product = data
+          this.prodlist = data
           alert('Inside save poproducts() '+ JSON.stringify(data) )
 
-          sessionStorage.setItem('po_temp_id',''+this.po_product.temp_id)
+          sessionStorage.setItem('po_temp_id',''+this.prodlist[0].temp_id)
           
           setTimeout(() => {
             purchase_prod.reset()
