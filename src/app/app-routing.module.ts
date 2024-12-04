@@ -74,6 +74,7 @@ const routes: Routes = [
     {path : "" , component : LoginComponent },
     {path : "logouturl" , component : LogoutComponent , canActivate : [RouteGuardService]},
     {path : "home" , pathMatch : 'full', component : HomeComponent ,canActivate : [RouteGuardService]}
+     
     
   ];
 

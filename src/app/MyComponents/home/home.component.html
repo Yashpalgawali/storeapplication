@@ -1,9 +1,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-
-    </style>
+    
     </head>
  
   <div class="sidebar">
@@ -14,30 +12,38 @@
   </div>
   
   <div class="main">
-    <h2 class="text-center text-uppercase"><strong>Store  application</strong></h2>
+    <div class="contain">
+    <div class="row">
+        <div style="background-color: #d1e0e4" id="appname">
+            <h2 class="text-center text-uppercase"><strong>Store  application</strong></h2>
+        </div>
+     </div>
     <div class="row">
         <div class="col-sm-6 text-center" >
-            <div style="height: 100px;width: 300px; background-color: #6acbf8;">
-                <a routerLink="/addinvoice" class="btn btn-primary">ADd Invoice</a>
+            <a routerLink="/addinvoice" >
+                <div style="height: 100px;width: 300px; background-color: #6acbf8;">
+                        Add Invoice
+                </div>
+            </a>
+        </div>
+        <div class="col-sm-6 text-center">
+            <div style="height: 100px;width: 300px; background-color: teal;">
+                <a routerLink="/addcustomer"  >Add Customer</a>
             </div>
         </div>
         <div class="col-sm-6 text-center">
             <div style="height: 100px;width: 300px; background-color: teal;">
-                <a routerLink="/addcustomer" class="btn btn-warning">Add Customer</a>
-            </div>
-        </div>
-        <div class="col-sm-6 text-center">
-            <div style="height: 100px;width: 300px; background-color: teal;">
-                <a routerLink="/viewinvoice" class="btn btn-primary">View Invoice</a>
+                <a routerLink="/viewinvoice" >View Invoice</a>
             </div>
         </div> 
         <div class="col-sm-6 text-center">
             <div style="height: 100px;width: 300px; background-color: rgb(115, 128, 0);">
-                <a routerLink="/viewcustomers" class="btn btn-success">View Customer</a>
+                <a routerLink="/viewcustomers" >View Customer</a>
             </div>
         </div>
     </div>
   </div>
+</div>
 
 <!-- 
 <div style="width:160px;background-color: red; height: 100vh;margin-top: 60px; ">

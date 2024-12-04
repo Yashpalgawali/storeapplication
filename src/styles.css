@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    font-family: "Lato", sans-serif;
+    overflow: hidden; /* Hide scrollbars */
+  }
+ 
 .container{
     margin-top: 80px;
 }
@@ -6,3 +11,5 @@ a:visited{ text-decoration : none;}
 a:link{ text-decoration : none;}
 a:hover{ text-decoration : none;}
 a:active{ text-decoration : none;}
+
+ 
