@@ -22,7 +22,7 @@ body{
     border-radius: 12px;
     border: 2px solid rgba(0,0,0,.1);
     padding: 30px 40px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px); /*This gives glass effect */
 }
 .wrapper h1{
     font-size: 36px;
