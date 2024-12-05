@@ -30,6 +30,7 @@ import { ViewdocketComponent } from './MyComponents/Docket/viewdocket/viewdocket
 import { AddpartyComponent } from './MyComponents/Party/addparty/addparty.component';
 import { ViewpartyComponent } from './MyComponents/Party/viewparty/viewparty.component';
 import { PrintpurchaseorderComponent } from './MyComponents/PurchaseOrder/printpurchaseorder/printpurchaseorder.component';
+import { AddcreditnoteComponent } from './MyComponents/CreditNote/addcreditnote/addcreditnote.component';
 
 const routes: Routes = [
     {path : "product" , component : AddproductComponent,canActivate : [RouteGuardService]},
@@ -69,6 +70,8 @@ const routes: Routes = [
     {path : "addparty" , component : AddpartyComponent, canActivate : [RouteGuardService]},
     {path : "edit/party/:id" , component : AddpartyComponent, canActivate : [RouteGuardService]},
     {path : "viewparties" , component : ViewpartyComponent, canActivate : [RouteGuardService]},
+
+    {path : "addcreditnote" , component : AddcreditnoteComponent, canActivate : [RouteGuardService]},
 
     {path : "login" , component : LoginComponent },
     {path : "" , component : LoginComponent },

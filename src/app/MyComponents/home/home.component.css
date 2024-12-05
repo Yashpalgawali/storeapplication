@@ -64,10 +64,10 @@ a:hover,a:active,a:visited,a:link {
 
  }
  .cardobj {
-  height: 200px;
-  width: 300px;
+  height: 150px;
+  width: 200px;
   background-color: #d1e0e4;
-  font-size: x-large;
+  font-size: 20px;
   border-radius: 12px;
   margin-top: 10px;
   display: flex;
@@ -78,16 +78,4 @@ a:hover,a:active,a:visited,a:link {
 .cardobj > a{
   color: rgb(0, 0, 0);
 }
-/* .contain>.cardobj_child{
-  margin: 10px;
-  padding: 5px;
-  height: 200px;
-  background-color: teal;
-  border-radius: 12px;
-  color:  whitesmoke;
-  align-items: center;
-  text-align: center;
-  font-size: 30px;
-  cursor : pointer;
-  float: left;
-} */
+ 
