@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Login } from 'src/app/Models/Login';
-import { BasicAuthServiceService } from 'src/app/Services/basic-auth-service.service';
 import { JwtAuthServiceService } from 'src/app/Services/jwt-auth-service.service';
 import { LoginService } from 'src/app/Services/login.service';
-import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +18,7 @@ export class LoginComponent {
               private router    : Router) {  }
 
     ngOnInit(): void {
+
       this.response= sessionStorage.getItem('response')
       if(sessionStorage.getItem('response')!=null)
         {

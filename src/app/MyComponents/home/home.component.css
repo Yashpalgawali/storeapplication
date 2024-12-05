@@ -1,6 +1,8 @@
 
 /* Style the navigation bar */
-
+*{
+  overflow: hidden; /* Hide scrollbars */
+}
 .sidebar {
   height: 100%;
   width: 160px;
@@ -30,6 +32,7 @@
    
   margin-top: 55px;
   padding: 0px 10px  0px 10px;
+  
 }
  
 
@@ -51,4 +54,40 @@ a:hover,a:active,a:visited,a:link {
   .main {
     left: 0;
   }
+   
 }
+
+ .contain{
+      display: flex; /* Flexbox enables side-by-side placement */
+      justify-content: space-evenly ; /* Adds space between the items */
+      flex-wrap: wrap; /* Allows wrapping of items when the container is too narrow */
+
+ }
+ .cardobj {
+  height: 200px;
+  width: 300px;
+  background-color: #d1e0e4;
+  font-size: x-large;
+  border-radius: 12px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+   
+}
+.cardobj > a{
+  color: rgb(0, 0, 0);
+}
+/* .contain>.cardobj_child{
+  margin: 10px;
+  padding: 5px;
+  height: 200px;
+  background-color: teal;
+  border-radius: 12px;
+  color:  whitesmoke;
+  align-items: center;
+  text-align: center;
+  font-size: 30px;
+  cursor : pointer;
+  float: left;
+} */
