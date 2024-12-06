@@ -69,16 +69,39 @@ ngOnInit(): void {
     }
   }
 
-  updatePurchaseOrderProducts(purchase_prod  : NgForm) {
-
+  updatePurchaseOrderProducts() {
+    this.purchaseorderserv.savePurchaseOrder(this.purchase_order).subscribe({
+      complete:()=> {
+        sessionStorage.removeItem('po_temp_id')
+        sessionStorage.setItem('response','Purchase Order is saved successfully')
+          this.router.navigate(['viewpurchaseorder'])
+      },
+      error: (err) => {
+        sessionStorage.setItem('reserr','Purchase Order is not saved')
+        this.router.navigate(['viewpurchaseorder'])
+      },
+    })
   }
 
   updatePOProducts(purchase_prod : NgForm) {
+    this.purchaseordprodserv.savePurchaseOrderProducts(this.po_product).subscribe({
+      next:(data) => {
+        this.prodlist = data
+        alert('Inside save poproducts() '+ JSON.stringify(data) )
 
+        sessionStorage.setItem('po_temp_id',''+this.prodlist[0].temp_id)
+        
+        setTimeout(() => {
+          purchase_prod.reset()
+          this.ngOnInit()
+        }, 1);
+      }
+  })
   }
 
   removePurchaseOrderProduct(prodid : number)
-  {
+  { 
+    alert('IDF '+prodid)
     this.purchaseordprodserv.removePOProductById(prodid).subscribe({
       next : (data) => {
           alert(data)
