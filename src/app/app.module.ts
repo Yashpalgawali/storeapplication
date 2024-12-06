@@ -40,6 +40,7 @@ import { AddpartyComponent } from './MyComponents/Party/addparty/addparty.compon
 import { ViewpartyComponent } from './MyComponents/Party/viewparty/viewparty.component';
 import { PrintpurchaseorderComponent } from './MyComponents/PurchaseOrder/printpurchaseorder/printpurchaseorder.component';
 import { AddcreditnoteComponent } from './MyComponents/CreditNote/addcreditnote/addcreditnote.component';
+import { ChangepasswordComponent } from './MyComponents/Password/changepassword/changepassword.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { AddcreditnoteComponent } from './MyComponents/CreditNote/addcreditnote/
     AddpartyComponent,
     ViewpartyComponent,
     PrintpurchaseorderComponent,
-    AddcreditnoteComponent
+    AddcreditnoteComponent,
+    ChangepasswordComponent
   ],
   imports: [
     BrowserModule,

@@ -31,6 +31,7 @@ import { AddpartyComponent } from './MyComponents/Party/addparty/addparty.compon
 import { ViewpartyComponent } from './MyComponents/Party/viewparty/viewparty.component';
 import { PrintpurchaseorderComponent } from './MyComponents/PurchaseOrder/printpurchaseorder/printpurchaseorder.component';
 import { AddcreditnoteComponent } from './MyComponents/CreditNote/addcreditnote/addcreditnote.component';
+import { ChangepasswordComponent } from './MyComponents/Password/changepassword/changepassword.component';
 
 const routes: Routes = [
     {path : "product" , component : AddproductComponent,canActivate : [RouteGuardService]},
@@ -76,9 +77,11 @@ const routes: Routes = [
     {path : "login" , component : LoginComponent },
     {path : "" , component : LoginComponent },
     {path : "logouturl" , component : LogoutComponent , canActivate : [RouteGuardService]},
-    {path : "home" , pathMatch : 'full', component : HomeComponent ,canActivate : [RouteGuardService]}
+    {path : "home" , pathMatch : 'full', component : HomeComponent ,canActivate : [RouteGuardService]},
      
-    
+    {path : "changepass" , component : ChangepasswordComponent, canActivate : [RouteGuardService]}
+
+     
   ];
 
 @NgModule({

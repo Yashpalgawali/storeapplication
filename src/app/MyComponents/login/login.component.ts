@@ -37,6 +37,7 @@ Login() {
     error :(e)=> {
       this.reserr="Invalid Username or Password"
       setTimeout(() => {
+        alert(this.reserr)
         this.reserr=""
       }, 4000);
       this.router.navigate(['login'])

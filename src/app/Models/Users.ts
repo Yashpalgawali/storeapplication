@@ -1,4 +1,5 @@
-export class Login{
+export class Users{
+    user_id !: number
     username !: string
     password !: string
     email    !: string
