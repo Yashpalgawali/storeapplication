@@ -81,14 +81,13 @@ export class AddpurchaseorderComponent implements OnInit {
       complete:()=> {
         sessionStorage.removeItem('po_temp_id')
         sessionStorage.setItem('response','Purchase Order is saved successfully')
-          this.router.navigate(['viewpurchaseorder'])
+        this.router.navigate(['viewpurchaseorder'])
       },
       error: (err) => {
         sessionStorage.setItem('reserr','Purchase Order is not saved')
         this.router.navigate(['viewpurchaseorder'])
       },
     })
-     
   }
 
   removeitem(prod_id :number) {

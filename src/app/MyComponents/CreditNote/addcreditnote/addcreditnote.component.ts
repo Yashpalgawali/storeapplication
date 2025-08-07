@@ -14,11 +14,12 @@ export class AddcreditnoteComponent implements OnInit{
   invlist : any
   creditnote : CreditNote = new CreditNote()
   invoice : Invoice = new Invoice()
+  selectedInvoiceNo : string =''
   constructor(private router : Router,private invserv : InvoiceService ){}
 
   ngOnInit(): void {
     this.invserv.getAllInvoices().subscribe({
-      next: (data) =>{
+      next: (data) => {
           this.invlist = data  
       },
 
@@ -31,7 +32,7 @@ export class AddcreditnoteComponent implements OnInit{
   }
 
 
-  getInvoiceProductsByInvoiceNumber(){
-    alert('Invoice Number is '+JSON.stringify(this.invoice ))
+  getInvoiceProductsByInvoiceNumber(invoice : Event) {
+    alert('Invoice  is '+JSON.stringify(this.invoice.invoice_no ))
   }
 }

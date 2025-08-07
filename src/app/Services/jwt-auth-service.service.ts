@@ -3,6 +3,7 @@ import { GlobalComponents } from '../GlobalComponents';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { JwtToken } from '../Models/JwtToken';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +21,23 @@ export class JwtAuthServiceService {
     })
      
     // return this.http.get<JwtToken>(`${this.app_url}authenticate`,{ headers : headers}).pipe(
-   return this.http.get<JwtToken>(`${this.app_url}authenticate`, { headers: headers, withCredentials: true }  ).pipe(
+  //  return this.http.get<JwtToken>(`${this.app_url}authenticate`, { headers: headers }  ).pipe(
+  //   map(
+  //                     data=>{
+  //                             sessionStorage.setItem('token',data.token)
+  //                             sessionStorage.setItem('authenticatedUser',username)
+  //                             localStorage.setItem('authenticatedUser',username)
+  //                             localStorage.setItem('token',data.token)
+  //                             return data;
+  //                       }
+  //                   ));
+ 
+  // }
+   return this.http.post<JwtToken>(`${this.app_url}authenticate`,{username ,password}, { headers: headers }  ).pipe(
     map(
-                      data=>{ 
+                      data=>{
+                             let decoded = jwtDecode(data.token)
+                              console.log('Decoded Token  ',decoded)
                               sessionStorage.setItem('token',data.token)
                               sessionStorage.setItem('authenticatedUser',username)
                               localStorage.setItem('authenticatedUser',username)

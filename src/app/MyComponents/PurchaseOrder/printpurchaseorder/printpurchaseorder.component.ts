@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { PurchaseOrder } from 'src/app/Models/PurchaseOrder';
 import { PurchaseOrderProducts } from 'src/app/Models/PurchaseOrderProducts';
+import { HeaderService } from 'src/app/Services/header.service';
 import { PurchaseorderService } from 'src/app/Services/purchaseorder.service';
 import { PurchaseorderproductsService } from 'src/app/Services/purchaseorderproducts.service';
 
@@ -11,7 +12,7 @@ import { PurchaseorderproductsService } from 'src/app/Services/purchaseorderprod
   templateUrl: './printpurchaseorder.component.html',
   styleUrls: ['./printpurchaseorder.component.css']
 })
-export class PrintpurchaseorderComponent implements OnInit{
+export class PrintpurchaseorderComponent implements OnInit,OnDestroy{
 
   //poprodlist : PurchaseOrderProducts[] = []  
   poprodlist : any
@@ -37,11 +38,16 @@ export class PrintpurchaseorderComponent implements OnInit{
   purchase_order : PurchaseOrder = new PurchaseOrder()
 
   constructor(private purchaseorderserv : PurchaseorderService,
-              private route : ActivatedRoute,
+              private route : ActivatedRoute,private headerService : HeaderService,
               private poprodserv : PurchaseorderproductsService){}
   
 
+              ngOnDestroy(): void {
+                this.headerService.setHeaderVisibility(true)
+                
+              }
   ngOnInit(): void {
+    this.headerService.setHeaderVisibility(false)
     let poid = this.route.snapshot.params['id']
     this.purchaseorderserv.getePurchaseOrderById(poid).pipe(
       switchMap(first => {

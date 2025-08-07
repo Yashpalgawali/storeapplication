@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Login } from 'src/app/Models/Login';
-import { JwtAuthServiceService } from 'src/app/Services/jwt-auth-service.service';
+import { HeaderService } from 'src/app/Services/header.service';
 import { LoginService } from 'src/app/Services/login.service';
 
 @Component({
@@ -13,12 +13,19 @@ export class LoginComponent {
   response  : any;
   reserr    : any;
   login     : Login = new Login()
-  constructor(private jwtauthserv  : JwtAuthServiceService,
-              private loginserv : LoginService,
-              private router    : Router) {  }
+  constructor(private loginserv : LoginService,
+              private router    : Router,private headerService : HeaderService) {  }
 
+    hideHeader() {
+      this.headerService.setHeaderVisibility(false);  // Hide the header
+    }
+  
+    showHeader() {
+      this.headerService.setHeaderVisibility(true);  // Show the header
+    }
     ngOnInit(): void {
 
+      this.hideHeader()
       this.response= sessionStorage.getItem('response')
       if(sessionStorage.getItem('response')!=null)
         {

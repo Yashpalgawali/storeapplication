@@ -101,13 +101,13 @@ ngOnInit(): void {
 
   removePurchaseOrderProduct(prodid : number)
   { 
-    alert('IDF '+prodid)
+     
     this.purchaseordprodserv.removePOProductById(prodid).subscribe({
       next : (data) => {
-          alert(data)
+          
       },
       error : (err) => {
-          alert("Product is not removed")
+           
       },
     })
   }

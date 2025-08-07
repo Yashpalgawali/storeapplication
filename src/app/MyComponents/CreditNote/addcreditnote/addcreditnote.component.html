@@ -2,7 +2,6 @@
     <!-- start: PAGE HEADER -->
      <div class="row">
       <div class="col-sm-12">
-          
           <!-- start: PAGE TITLE & BREADCRUMB -->
           <ol class="breadcrumb">
               <li class="breadcrumb-item" >
@@ -12,26 +11,35 @@
           </ol>
       </div>
      </div>
-  
+
     <div class="card">
       <div class="card-header"> <h4>Add Credit Note</h4> </div>
-      
       <div class="card-body">
-      <form  (ngSubmit)="saveTempCreditNoteProduct(tmpinv)" #tmpinv="ngForm">
-           <div class="form-group">
-             <label for="product">Product</label>
-               <select id="product" name="product" class="form-control mb-3" [(ngModel)]="creditnote.invoice" (change)="getInvoiceProductsByInvoiceNumber()">
-                   <option disabled selected>Please Select Invoice</option>
-                   <option  *ngFor="let inv of  invlist ; let i=index" [ngValue]="inv">{{inv.prefix}}-{{inv.invoice_no}}-{{inv.customer.cust_first_name }}</option>
-               </select>
-           </div>
-
-           <input type="submit" id="sbm" value="Add Invoice" class="btn btn-primary">		
+        <form  (ngSubmit)="saveTempCreditNoteProduct(tmpinv)" #tmpinv="ngForm">
+            <div class="form-group">
+                <select id="invoice" name="invoice" class="form-control mb-3" [(ngModel)]="creditnote.invoice" 
+                    (change)="getInvoiceProductsByInvoiceNumber($event)">
+                    <option disabled selected>Please Select Invoice</option>
+                    <option *ngFor="let inv of invlist; let i = index" [ngValue]="inv">
+                        {{ inv.prefix }}-{{ inv.invoice_no }}-{{ inv.customer.cust_first_name }}
+                    </option>
+                </select>
                 
-      </form>
+            </div>
+            <!-- <div class="form-group">
+                <label for="invoice">Select Invoice</label>
+                <select id="invoice" name="invoice" class="form-control mb-3" [(ngModel)]="creditnote.invoice" (change)="getInvoiceProductsByInvoiceNumber(creditnote.invoice)">
+                    <option disabled selected>Please Select Invoice</option>
+                    <option  *ngFor="let inv of  invlist ; let i=index" [ngValue]="inv">{{inv.prefix}}-{{inv.invoice_no}}-{{inv.customer.cust_first_name }}</option>
+                </select>
+            </div> -->
+
+            <input type="submit" id="sbm" value="Credit Note Product" class="btn btn-primary">		
+
+        </form>
       <hr class="mt-3">
-      
-  <!--      <div class="col-sm-12">
+
+  <!--  <div class="col-sm-12">
            <div class="card-header">
                <strong>Invoice Product List </strong>
            </div>
@@ -50,14 +58,14 @@
                   <td>Action</td>
               </tr>
           </thead>
-          
+
           <tbody>
               <tr *ngFor="let tempinv of tempinvlist; let i=index">
                   <td>{{i+1}}</td>
                   <td>{{ tempinv.product.prod_name}}</td>
                   <td>{{ tempinv.product.prod_hsn}}</td>
                   <td>{{tempinv.unit_price}}</td>
-                  
+
                   <td>{{ tempinv.qty}}</td>
                   <ng-container *ngIf="tempinv.igst==0">
                       <td>{{tempinv.cgst}}({{tempinv.cgst_per}}%)</td>
@@ -83,17 +91,17 @@
                   <option  *ngFor="let cust of  custlist ; let i=index" [ngValue]="cust">{{cust.cust_first_name}} {{cust.cust_last_name}} </option>
               </select>
           </div>
-          
+
           <div class="form-group">
               <label for="vehicle">Vehicle Number</label>
                   <input type="text" id="vehicle" name="vehicle" [(ngModel)]="invoice.vehicle" placeholder="Enter the Vehicle" class="form-control mb-3" />
           </div>
-          
+
           <div class="form-group">
               <label for="orderponumber">Order PO Number</label>
                   <input type="number" id="orderponumber" name="orderponumber" placeholder="Enter the Quantity" [(ngModel)]="invoice.orderponumber" class="form-control mb-3" />
           </div>
-  
+
           <div class="form-group">
               <label for="batch_no">Batch No</label>
                   <input type="number" id="batch_no" name="batch_no" placeholder="Enter the Batch No" [(ngModel)]="invoice.batch_no" class="form-control mb-3" />

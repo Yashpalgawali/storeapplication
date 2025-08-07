@@ -5,6 +5,7 @@ import { map } from 'rxjs';
 import { Customer } from 'src/app/Models/Customer';
 import { Invoice } from 'src/app/Models/Invoice';
 import { CustomerService } from 'src/app/Services/customer.service';
+import { HeaderService } from 'src/app/Services/header.service';
 import { InvoiceService } from 'src/app/Services/invoice.service';
 import { PrefixService } from 'src/app/Services/prefix.service';
 
@@ -43,9 +44,18 @@ export class ViewinvoicetemplateComponent implements  OnInit {
   constructor(private invserv : InvoiceService, 
               private custserv : CustomerService,
               private router : Router , private route :ActivatedRoute,private decimalPipe: DecimalPipe,
-              private prefixserv : PrefixService) { }
+              private prefixserv : PrefixService,private headerService : HeaderService) { 
+              
+              }
 
+             
+    ngOnDestroy() {
+      // Optionally, restore the header visibility when leaving the component
+      this.headerService.setHeaderVisibility(true);
+    }
   ngOnInit(): void {
+    this.headerService.setHeaderVisibility(false);  // Hide the header
+    
     this.invoice_id = this.route.snapshot.params[('id')]
     this.prefixserv.getPrefixById(1).subscribe({
       next : (data )=>{
